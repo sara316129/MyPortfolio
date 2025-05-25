@@ -7,12 +7,45 @@
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	<style>
+		/* Video background style for banner */
 		#banner {
-			background: url("images/b0cf134d-99d1-44fe-a514-8a3863d1ea67.png") no-repeat center center;
-			background-size: cover;
+			position: relative;
+			overflow: hidden;
+			height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
 			color: white;
-			text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-			padding: 6em 0;
+		}
+
+		.bg-video {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			z-index: -1;
+		}
+
+		#banner .inner {
+			position: relative;
+			z-index: 1;
+			padding: 2rem;
+			background: rgba(0, 0, 0, 0.4); /* overlay for text readability */
+			border-radius: 12px;
+		}
+
+		#banner h2 {
+			font-size: 3rem;
+			font-weight: 700;
+			margin-bottom: 0.5rem;
+		}
+
+		#banner p {
+			font-size: 1.3rem;
+			margin: 0.5rem 0;
 		}
 	</style>
 </head>
@@ -28,9 +61,14 @@
 
 		<!-- Banner -->
 		<section id="banner">
+			<video autoplay muted loop playsinline class="bg-video">
+				<source src="project/images/for web.mp4" type="video/mp4">
+				Your browser does not support the video tag.
+			</video>
 			<div class="inner">
 				<h2>Sales Data Analysis Project</h2>
 				<p>Exploring Sales, Customers & Profitability with SQL & Power BI</p>
+				<p>This project uses a publicly available dataset from Kaggle, focusing on real-world retail sales data.</p>
 			</div>
 		</section>
 
@@ -93,7 +131,7 @@
 				<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
 			</ul>
 			<ul class="copyright">
-				<li>&copy; Saranga Nuwan Hathurusinghe</li><li>
+				<li>&copy; Saranga Nuwan Hathurusinghe</li>
 			</ul>
 		</footer>
 
