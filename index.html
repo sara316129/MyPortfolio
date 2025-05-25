@@ -193,7 +193,8 @@ document.getElementById("contact-form").addEventListener("submit", function(e) {
     const email = document.querySelector('[name="email"]').value;
     const message = document.querySelector('[name="message"]').value;
 
-    fetch("AKfycbzu4lhuWNgeiMhAJwKHKfo-lg-NYideZyTt3GL0YFQ", {
+    fetch("https://script.google.com/macros/s/AKfycbzu4lhuWNgeiMhAJwKHKfo-lg-NYideZyTt3GL0YFQ/exec
+", {
         method: "POST",
         body: JSON.stringify({ name, email, message }),
         headers: {
