@@ -6,6 +6,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	<style>
+		#banner {
+			background: url("images/b0cf134d-99d1-44fe-a514-8a3863d1ea67.png") no-repeat center center;
+			background-size: cover;
+			color: white;
+			text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+			padding: 6em 0;
+		}
+	</style>
 </head>
 <body class="landing is-preload">
 
@@ -17,51 +26,43 @@
 			<h1><a href="index.html">Sales Data Dashboard</a></h1>
 		</header>
 
-		<!-- Banner (cleaned up) -->
+		<!-- Banner -->
 		<section id="banner">
 			<div class="inner">
-				<h2>Sales Data Dashboard</h2>
-				<p>Undergraduate Student of University of Colombo</p>
-				<p><strong>Passionate about Data Analysis | Data Visualizations | AI & Machine Learning</strong></p>
+				<h2>Sales Data Analysis Project</h2>
+				<p>Exploring Sales, Customers & Profitability with SQL & Power BI</p>
 			</div>
 		</section>
 
-		<!-- Sales Data Analysis Project -->
+		<!-- Content Sections -->
 		<section id="two" class="wrapper alt style2">
-			<section class="spotlight" style="background-image: url('images/will-ai-take-data-analyst-jobs-blog-scaled.jpg'); background-size: cover; filter: blur(8px);">
-				<div class="image"></div>
-				<div class="content">
-					<h2>Sales Data Analysis Project</h2>
-					<p><strong>Uncover insights into customer behavior, product performance, and profitability.</strong></p>
-				</div>
-			</section>
 
-			<!-- Spotlight #1: SQL Data Preparation -->
+			<!-- Spotlight #1: SQL Preparation -->
 			<section class="spotlight">
 				<div class="image"><img src="images/sql.png" alt="SQL Data Preparation" /></div>
 				<div class="content">
 					<h2>Data Cleaning & Preparation with SQL</h2>
-					<p>The data was imported into SQL Server for cleaning and initial processing. Key steps included:</p>
+					<p>The raw dataset was processed using SQL Server Management Studio (SSMS):</p>
 					<ul>
-						<li>Removed duplicate records</li>
-						<li>Filtered and filled null values</li>
-						<li>Ensured consistent data types and formats</li>
-						<li>Matched returns to orders using `Order ID`</li>
+						<li>Duplicates were removed</li>
+						<li>Nulls handled appropriately</li>
+						<li>Consistent data types ensured</li>
+						<li>Returns matched to orders via Order ID</li>
 					</ul>
 				</div>
 			</section>
 
-			<!-- Spotlight #2: Sales Dashboard -->
+			<!-- Spotlight #2: Power BI Dashboard -->
 			<section class="spotlight">
-				<div class="image"><img src="images/Visualizasion-1.png" alt="Sales Dashboard" /></div>
+				<div class="image"><img src="images/Visualizasion-1.png" alt="Power BI Dashboard" /></div>
 				<div class="content">
-					<h2>Interactive Sales Dashboard in Power BI</h2>
-					<p>The cleaned data was loaded into Power BI to create an interactive and dynamic sales dashboard. Key features included:</p>
+					<h2>Interactive Dashboard in Power BI</h2>
+					<p>After cleaning, data was loaded into Power BI to create powerful visualizations:</p>
 					<ul>
-						<li>KPIs for total sales, profit, and quantity</li>
-						<li>DAX formulas for profit margins and unit prices</li>
-						<li>Interactive slicers for customer segments and regions</li>
-						<li>Drill-through functionality to explore deeper customer-level data</li>
+						<li>DAX used for KPIs: sales, profit, quantity</li>
+						<li>Interactive filters: year, segment, region</li>
+						<li>Custom date slicers & trend indicators</li>
+						<li>Drill-through for customer-level analysis</li>
 					</ul>
 				</div>
 			</section>
@@ -70,15 +71,17 @@
 			<section class="spotlight">
 				<div class="image"><img src="images/Visualizasion-1.png" alt="Customer Insights" /></div>
 				<div class="content">
-					<h2>Customer-Level Insights & Challenges</h2>
-					<p>The dashboard helped uncover several key insights related to customer behavior, such as:</p>
+					<h2>Customer Insights & Challenges</h2>
+					<p>This project uncovered deep insights:</p>
 					<ul>
-						<li>Identifying products with high sales but negative profits, which led to the discovery of low-margin or loss-leading products</li>
-						<li>Managing customers with multiple shipping addresses, ensuring accurate order summaries</li>
-						<li>Creating a balanced dashboard layout despite limited space, ensuring clarity and usability</li>
+						<li>Low-margin/high-volume products identified</li>
+						<li>Multi-location customers handled in summaries</li>
+						<li>Year-over-year targets built with DAX logic</li>
+						<li>Visually balanced dashboard for stakeholder use</li>
 					</ul>
 				</div>
 			</section>
+
 		</section>
 
 		<!-- Footer -->
