@@ -155,12 +155,13 @@
                     <h2>Contact</h2>
                 </header>
                 <p>Let's build something amazing together. Feel free to drop me a message.</p>
-                <form id="contact-form">
+                <form method="POST" action="https://script.google.com/macros/s/AKfycb.../exec">
   <input type="text" name="name" placeholder="Your Name" required>
   <input type="email" name="email" placeholder="Your Email" required>
   <textarea name="message" placeholder="Your Message" required></textarea>
   <button type="submit">Send Message</button>
 </form>
+
 
             </div>
         </section>
@@ -196,7 +197,7 @@ document.getElementById("contact-form").addEventListener("submit", function(e) {
     message: form.message.value
   };
 
-  fetch("https://script.google.com/macros/s/AKfycbzhJBmKjiUaMWrc8TuoDU0x0PO9S0FhhSHsTKh79L7-yH951JEIJ4hLudMH9I-SR0wd/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbw-qFlrAfw57JqDjAh0HZaz44lwklbiKdLyX6Q_UT7aTMN_vfQ15KxSfesDiTVgcXet/exec", {
     method: "POST",
     body: JSON.stringify(data),
     headers: {
