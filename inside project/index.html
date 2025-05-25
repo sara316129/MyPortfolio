@@ -1,131 +1,112 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Sales Data Dashboard</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <style>
-        /* Video Background Styling */
-        #banner {
-            position: relative;
-            overflow: hidden;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-        }
-
-        .bg-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
-
-        #banner .inner {
-            position: relative;
-            z-index: 1;
-            padding: 2rem;
-            background: rgba(0, 0, 0, 0.4); /* semi-transparent dark overlay */
-            border-radius: 12px;
-        }
-
-        #banner h2 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        #banner p {
-            font-size: 1.4rem;
-            margin: 0.5rem 0;
-        }
-
-        /* Reduce spacing between lines in project list */
-        .project-item p {
-            margin: 0.3rem 0;
-        }
-
-        /* Emphasize section headers */
-        h3, h2 {
-            font-weight: 700;
-        }
-    </style>
-    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	<title>Sales Data Dashboard</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	<style>
+		#banner {
+			background: url("images/b0cf134d-99d1-44fe-a514-8a3863d1ea67.png") no-repeat center center;
+			background-size: cover;
+			color: white;
+			text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+			padding: 6em 0;
+		}
+	</style>
 </head>
 <body class="landing is-preload">
 
-    <!-- Page Wrapper -->
-    <div id="page-wrapper">
+	<!-- Page Wrapper -->
+	<div id="page-wrapper">
 
-        <!-- Banner with Video Background -->
-        <section id="banner">
-            <video autoplay muted loop playsinline class="bg-video">
-                <source src="project/images/for web.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="inner">
-                <h2>Hi, I'm Saranga</h2>
-                <p>Undergraduate Student of University Of Colombo</p>
-                <p><strong>Passionate about Data Analysis | Data Visualizations | AI & Machine Learning</strong></p>
-            </div>
-        </section>
+		<!-- Header -->
+		<header id="header" class="alt">
+			<h1><a href="index.html">Sales Data Dashboard</a></h1>
+		</header>
 
-        <!-- Spotlight Sections -->
-        <section id="two" class="wrapper alt style2">
-            <section class="spotlight">
-                <div class="image"><img src="images/pic01.jpg" alt="" /></div>
-                <div class="content">
-                    <h2>Magna primis lobortis<br /> sed ullamcorper</h2>
-                    <p>Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.</p>
-                </div>
-            </section>
-            <section class="spotlight">
-                <div class="image"><img src="images/pic02.jpg" alt="" /></div>
-                <div class="content">
-                    <h2>Tortor dolore feugiat<br /> elementum magna</h2>
-                    <p>Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.</p>
-                </div>
-            </section>
-            <section class="spotlight">
-                <div class="image"><img src="images/pic03.jpg" alt="" /></div>
-                <div class="content">
-                    <h2>Augue eleifend aliquet<br /> sed condimentum</h2>
-                    <p>Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.</p>
-                </div>
-            </section>
-        </section>
+		<!-- Banner -->
+		<section id="banner">
+			<div class="inner">
+				<h2>Sales Data Analysis Project</h2>
+				<p>Exploring Sales, Customers & Profitability with SQL & Power BI</p>
+			</div>
+		</section>
 
-        <!-- Footer -->
-        <footer id="footer">
-            <ul class="icons">
-                <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-                <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-                <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-                <li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-                <li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-            </ul>
-            <ul class="copyright">
-                <li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-            </ul>
-        </footer>
+		<!-- Content Sections -->
+		<section id="two" class="wrapper alt style2">
 
-    </div>
+			<!-- Spotlight #1: SQL Preparation -->
+			<section class="spotlight">
+				<div class="image"><img src="images/sql.png" alt="SQL Data Preparation" /></div>
+				<div class="content">
+					<h2>Data Cleaning & Preparation with SQL</h2>
+					<p>The raw dataset was processed using SQL Server Management Studio (SSMS):</p>
+					<ul>
+						<li>Duplicates were removed</li>
+						<li>Nulls handled appropriately</li>
+						<li>Consistent data types ensured</li>
+						<li>Returns matched to orders via Order ID</li>
+					</ul>
+				</div>
+			</section>
 
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.scrollex.min.js"></script>
-    <script src="assets/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
+			<!-- Spotlight #2: Power BI Dashboard -->
+			<section class="spotlight">
+				<div class="image"><img src="images/Visualizasion-1.png" alt="Power BI Dashboard" /></div>
+				<div class="content">
+					<h2>Interactive Dashboard in Power BI</h2>
+					<p>After cleaning, data was loaded into Power BI to create powerful visualizations:</p>
+					<ul>
+						<li>DAX used for KPIs: sales, profit, quantity</li>
+						<li>Interactive filters: year, segment, region</li>
+						<li>Custom date slicers & trend indicators</li>
+						<li>Drill-through for customer-level analysis</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- Spotlight #3: Customer Insights -->
+			<section class="spotlight">
+				<div class="image"><img src="images/Visualizasion-1.png" alt="Customer Insights" /></div>
+				<div class="content">
+					<h2>Customer Insights & Challenges</h2>
+					<p>This project uncovered deep insights:</p>
+					<ul>
+						<li>Low-margin/high-volume products identified</li>
+						<li>Multi-location customers handled in summaries</li>
+						<li>Year-over-year targets built with DAX logic</li>
+						<li>Visually balanced dashboard for stakeholder use</li>
+					</ul>
+				</div>
+			</section>
+
+		</section>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<ul class="icons">
+				<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+				<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+				<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+				<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+			</ul>
+			<ul class="copyright">
+				<li>&copy; Saranga Nuwan Hathurusinghe</li><li>
+			</ul>
+		</footer>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
 
 </body>
 </html>
