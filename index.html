@@ -155,12 +155,14 @@
                     <h2>Contact</h2>
                 </header>
                 <p>Let's build something amazing together. Feel free to drop me a message.</p>
-                <form method="POST" action="https://script.google.com/macros/s/AKfycb.../exec">
-  <input type="text" name="name" placeholder="Your Name" required>
-  <input type="email" name="email" placeholder="Your Email" required>
-  <textarea name="message" placeholder="Your Message" required></textarea>
-  <button type="submit">Send Message</button>
-</form>
+                
+                <form id="contact-form" method="POST" action="https://script.google.com/macros/s/AKfycbw-qFlrAfw57JqDjAh0HZaz44lwklbiKdLyX6Q_UT7aTMN_vfQ15KxSfesDiTVgcXet/exec">
+                      <input type="text" name="name" placeholder="Your Name" required>
+                      <input type="email" name="email" placeholder="Your Email" required>
+                      <textarea name="message" placeholder="Your Message" required></textarea>
+                      <button type="submit">Send Message</button>
+                </form>
+
 
 
             </div>
@@ -187,38 +189,31 @@
 </body>
     
    <script>
-document.getElementById("contact-form").addEventListener("submit", function(e) {
-  e.preventDefault();
+  document.getElementById("contact-form").addEventListener("submit", function(e) {
+    e.preventDefault();
 
-  const form = e.target;
-  const data = {
-    name: form.name.value,
-    email: form.email.value,
-    message: form.message.value
-  };
+    const form = e.target;
+    const formData = new FormData(form);
 
-  fetch("https://script.google.com/macros/s/AKfycbw-qFlrAfw57JqDjAh0HZaz44lwklbiKdLyX6Q_UT7aTMN_vfQ15KxSfesDiTVgcXet/exec", {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: {
-      "Content-Type": "application/json"
-    }
-  })
-  .then(res => res.json())
-  .then(response => {
-    if (response.result === "success") {
-      alert("Message sent!");
-      form.reset();
-    } else {
-      alert("Error: " + response.message);
-    }
-  })
-  .catch(error => {
-    alert("Failed to send message.");
-    console.error("Error:", error);
+    fetch(form.action, {
+      method: "POST",
+      body: formData
+    })
+    .then(response => {
+      if (response.ok) {
+        alert("✅ Message sent successfully!");
+        form.reset();
+      } else {
+        alert("❌ Failed to send message. Server error.");
+      }
+    })
+    .catch(error => {
+      alert("❌ Failed to send message.");
+      console.error("Error:", error);
+    });
   });
-});
 </script>
+
 
 
 </html>
