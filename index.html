@@ -156,14 +156,24 @@
                 </header>
                 <p>Let's build something amazing together. Feel free to drop me a message.</p>
                 
-                <form id="contact-form" action="https://script.google.com/macros/s/AKfycbw-qFlrAfw57JqDjAh0HZaz44lwklbiKdLyX6Q_UT7aTMN_vfQ15KxSfesDiTVgcXet/exec>
-                    <div class="row">
-                        <div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Your Name" /></div>
-                        <div class="col-6 col-12-mobile"><input type="email" name="email" placeholder="Your Email" /></div>
-                        <div class="col-12"><textarea name="message" placeholder="Your Message"></textarea></div>
-                        <div class="col-12"><input type="submit" value="Send Message" /></div>
-                    </div>
-                </form>
+                <form id="contact-form" method="POST" action="https://script.google.com/macros/s/AKfycbw-qFlrAfw57JqDjAh0HZaz44lwklbiKdLyX6Q_UT7aTMN_vfQ15KxSfesDiTVgcXet/exec">
+  <div class="row">
+    <div class="col-6 col-12-mobile">
+      <input type="text" name="name" placeholder="Your Name" required />
+    </div>
+    <div class="col-6 col-12-mobile">
+      <input type="email" name="email" placeholder="Your Email" required />
+    </div>
+    <div class="col-12">
+      <textarea name="message" placeholder="Your Message" required></textarea>
+    </div>
+    <div class="col-12">
+      <input type="submit" value="Send Message" />
+    </div>
+  </div>
+</form>
+
+
 
 
 
