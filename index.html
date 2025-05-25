@@ -155,7 +155,7 @@
                     <h2>Contact</h2>
                 </header>
                 <p>Let's build something amazing together. Feel free to drop me a message.</p>
-                <form method="post" action="#">
+                <form id="contact-form">
                     <div class="row">
                         <div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Your Name" /></div>
                         <div class="col-6 col-12-mobile"><input type="email" name="email" placeholder="Your Email" /></div>
@@ -171,8 +171,8 @@
     <!-- Footer -->
     <div id="footer">
         <ul class="copyright">
-            <li>&copy; 2025 Jane Doe. All rights reserved.</li>
-            <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+            <li>&copy; 2025 Saranga Nuwan. All rights reserved.</li>
+            
         </ul>
     </div>
 
@@ -185,4 +185,25 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
+    
+    <script>
+document.getElementById("contact-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const name = document.querySelector('[name="name"]').value;
+    const email = document.querySelector('[name="email"]').value;
+    const message = document.querySelector('[name="message"]').value;
+
+    fetch("AKfycbzu4lhuWNgeiMhAJwKHKfo-lg-NYideZyTt3GL0YFQ", {
+        method: "POST",
+        body: JSON.stringify({ name, email, message }),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(response => {
+        if (response.ok) alert("Message sent successfully!");
+        else alert("Error sending message.");
+    });
+});
+</script>
+
 </html>
