@@ -186,31 +186,39 @@
     <script src="assets/js/main.js"></script>
 </body>
     
-    <script>
-document.querySelector("form").addEventListener("submit", function (e) {
+   <script>
+document.getElementById("contact-form").addEventListener("submit", function(e) {
   e.preventDefault();
 
-  const name = document.querySelector('input[name="name"]').value;
-  const email = document.querySelector('input[name="email"]').value;
-  const message = document.querySelector('textarea[name="message"]').value;
+  const form = e.target;
+  const data = {
+    name: form.name.value,
+    email: form.email.value,
+    message: form.message.value
+  };
 
-  fetch("https://script.google.com/macros/s/AKfycbzu4lhuWNgeiMhAJwKHKfo-lg-NYideZyTt3GL0YFQ/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbzhJBmKjiUaMWrc8TuoDU0x0PO9S0FhhSHsTKh79L7-yH951JEIJ4hLudMH9I-SR0wd/exec", {
     method: "POST",
+    body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ name, email, message })
+    }
   })
   .then(res => res.json())
-  .then(data => {
-    alert("Message sent successfully!");
-    console.log(data);
+  .then(response => {
+    if (response.result === "success") {
+      alert("Message sent!");
+      form.reset();
+    } else {
+      alert("Error: " + response.message);
+    }
   })
-  .catch(err => {
-    alert("Error sending message.");
-    console.error("Fetch error:", err);
+  .catch(error => {
+    alert("Failed to send message.");
+    console.error("Error:", error);
   });
 });
 </script>
+
 
 </html>
