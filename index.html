@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Saranga Nuwan Hathurusinghe</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo">SNH<span class="dot">.</span></div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certificates">Certificates</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-content">
+      <div class="hero-image-wrap">
+        <!--
+          TO ADD YOUR PHOTO: replace the entire .hero-img-placeholder div with:
+          
+        -->
+        <div class="hero-img-placeholder">
+          <span><img src="me.png" alt="Saranga Nuwan" class="hero-photo" /></span>
+        </div>
+      </div>
+      <div class="hero-text">
+        <p class="hero-tag">BSc (Hons) Computational Mathematics &middot; University of Colombo</p>
+        <h1 class="hero-name">Saranga<br/><span class="hero-name-accent">Nuwan</span><br/>Hathurusinghe</h1>
+        <div class="hero-typewriter">
+          <span id="typewriterText"></span><span class="typewriter-cursor">|</span>
+        </div>
+        <div class="hero-cta">
+          <a href="#contact" class="btn-primary">Get In Touch</a>
+          <a href="#projects" class="btn-outline">View Work</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="section-label">01 &middot; About</div>
+      <div class="about-grid">
+        <div class="about-text">
+          <h2 class="section-title">Who I Am</h2>
+          <p>I'm an undergraduate at the University of Colombo Faculty of Science, studying BSc (Hons) in Computational Mathematics. I enjoy working with data - finding patterns, building models, and turning numbers into something that actually makes sense.</p>
+<p>Currently diving into <strong>Cryptography</strong> as part of my studies. Outside the studies, I'm involved with <strong>FOS Media</strong> - I handled Graphic Design in 2023/24 and took on the Treasurer role in 2024/25, while also doing video editing and motion graphics along the way.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-card-inner">
+            <div class="card-badge">FOS Media</div>
+            <p class="card-role">Graphic Design &middot; Video Editing &middot; Motion Graphics</p>
+            <div class="card-divider"></div>
+            <p class="card-desc">I do the math side and the design side - turns out they go together pretty well.</p>
+            <div class="card-tags">
+              <span>Photoshop</span>
+              <span>After Effects</span>
+              <span>Premiere Pro</span>
+              <span>InDesign</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills section" id="skills">
+    <div class="container">
+      <div class="section-label">02 &middot; Skills &amp; Tools</div>
+      <h2 class="section-title">What I Work With</h2>
+    </div>
+    <div class="marquee-wrapper">
+      <div class="marquee-track" id="marqueeTrack">
+
+        <!-- ── FIRST SET ── -->
+        <!-- TO ADD ICONS: replace <div class="skill-icon-ph"></div> with <img src="assets/icons/python.png" alt="Python" class="skill-icon" /> -->
+        <div class="skill-pill">
+          <div class="skill-icon-ph"> <img src="icons/python.png" alt="Python" width="24" height="24"/> </div>
+          <span>Python</span>
+        </div>
+        <div class="skill-pill">
+          <div class="skill-icon-ph"><img src="icons/sql.png" alt="SQL" width="24" height="24" /> </div>
+          <span>SQL</span>
+        </div>
+        <div class="skill-pill">
+          <div class="skill-icon-ph"><img src="icons/powerbi.png" alt="Power BI" width="24" height="24"/></div>
+          <span>Power BI</span>
+        </div>
+        <div class="skill-pill">
+          <div class="skill-icon-ph"><img src="icons/excel.png" alt="Excel" width="24" height="24"/></div>
+          <span>Excel</span>
+        </div>
+        <div class="skill-pill">
+          <div class="skill-icon-ph"><img src="icons/spss.png" alt="IBM SPSS" width="24" height="24"/></div>
+          <span>IBM SPSS</span>
+        </div>
+        <div class="skill-pill">
+          <div class="skill-icon-ph"><img src="icons/ml.png" alt="Machine Learning" width="24" height="24"/></div>
+          <span>Machine Learning</span>
+        </div>
+        <div class="skill-pill">
+          <div class="skill-icon-ph"><img src="icons/dataviz.png" alt="Data Viz" width="24" height="24"/> </div>
+          <span>Data Visualization</span>
+        </div>
+        <div class="skill-pill">
+          <div class="skill-icon-ph"><img src="icons/crypto.png" alt="Cryptography" width="24" height="24"/></div>
+          <span>Cryptography</span>
+        </div>
+        <div class="skill-pill">
+          <div class="skill-icon-ph"><img src="icons/vscode.png" alt="VS Code" width="24" height="24"/></div>
+          <span>VS Code</span>
+        </div>
+        <div class="skill-pill">
+          <div class="skill-icon-ph"><img src="icons/pycharm.png" alt="PyCharm" width="24" height="24"/></div>
+          <span>PyCharm</span>
+        </div>
+        <div class="skill-pill">
+          <div class="skill-icon-ph"><img src="icons/intellij.png" alt="IntelliJ IDEA" width="24" height="24"/></div>
+          <span>IntelliJ IDEA</span>
+        </div>
+        <div class="skill-pill">
+          <div class="skill-icon-ph"><img src="icons/github.png" alt="GitHub" width="24" height="24"/></div>
+          <span>GitHub</span>
+        </div>
+        <div class="skill-pill">
+          <div class="skill-icon-ph"><img src="icons/photoshop.png" alt="Photoshop" width="24" height="24"/></div>
+          <span>Photoshop</span>
+        </div>
+        <div class="skill-pill">
+          <div class="skill-icon-ph"><img src="icons/aftereffects.png" alt="After Effects" width="24" height="24"/></div>
+          <span>After Effects</span>
+        </div>
+        <div class="skill-pill">
+          <div class="skill-icon-ph"><img src="icons/premiere.png" alt="Premiere Pro" width="24" height="24"/> </div>
+          <span>Premiere Pro</span>
+        </div>
+        <div class="skill-pill">
+          <div class="skill-icon-ph"><img src="icons/indesign.png" alt="InDesign" width="24" height="24"/> </div>
+          <span>InDesign</span>
+        </div>
+
+        <!-- ── DUPLICATE SET for seamless infinite loop ── -->
+        <div class="skill-pill">
+          <div class="skill-icon-ph"><img src="icons/python.png" alt="Python" width="24" height="24"/></div>
+          <span>Python</span>
+        </div>
+        <div class="skill-pill">
+          <div class="skill-icon-ph"><img src="icons/sql.png" alt="SQL" width="24" height="24" /> </div>
+          <span>SQL</span>
+        </div>
+        <div class="skill-pill">
+          <div class="skill-icon-ph"><img src="icons/powerbi.png" alt="Power BI" width="24" height="24"/></div>
+          <span>Power BI</span>
+        </div>
+        <div class="skill-pill">
+          <div class="skill-icon-ph"><img src="icons/excel.png" alt="Excel" width="24" height="24"/></div>
+          <span>Excel</span>
+        </div>
+        <div class="skill-pill">
+          <div class="skill-icon-ph"><img src="icons/spss.png" alt="IBM SPSS" width="24" height="24"/></div>
+          <span>IBM SPSS</span>
+        </div>
+        <div class="skill-pill">
+          <div class="skill-icon-ph"><img src="icons/ml.png" alt="Machine Learning" width="24" height="24"/></div>
+          <span>Machine Learning</span>
+        </div>
+        <div class="skill-pill">
+          <div class="skill-icon-ph"><img src="icons/dataviz.png" alt="Data Viz" width="24" height="24"/> </div>
+          <span>Data Visualization</span>
+        </div>
+        <div class="skill-pill">
+          <div class="skill-icon-ph"><img src="icons/crypto.png" alt="Cryptography" width="24" height="24"/></div>
+          <span>Cryptography</span>
+        </div>
+        <div class="skill-pill">
+          <div class="skill-icon-ph"><img src="icons/vscode.png" alt="VS Code" width="24" height="24"/></div>
+          <span>VS Code</span>
+        </div>
+        <div class="skill-pill">
+          <div class="skill-icon-ph"><img src="icons/pycharm.png" alt="PyCharm" width="24" height="24"/></div>
+          <span>PyCharm</span>
+        </div>
+        <div class="skill-pill">
+          <div class="skill-icon-ph"><img src="icons/intellij.png" alt="IntelliJ IDEA" width="24" height="24"/></div>
+          <span>IntelliJ IDEA</span>
+        </div>
+        <div class="skill-pill">
+          <div class="skill-icon-ph"><img src="icons/github.png" alt="GitHub" width="24" height="24"/></div>
+          <span>GitHub</span>
+        </div>
+        <div class="skill-pill">
+          <div class="skill-icon-ph"><img src="icons/photoshop.png" alt="Photoshop" width="24" height="24"/></div>
+          <span>Photoshop</span>
+        </div>
+        <div class="skill-pill">
+          <div class="skill-icon-ph"><img src="icons/aftereffects.png" alt="After Effects" width="24" height="24"/></div>
+          <span>After Effects</span>
+        </div>
+        <div class="skill-pill">
+          <div class="skill-icon-ph"><img src="icons/premiere.png" alt="Premiere Pro" width="24" height="24"/> </div>
+          <span>Premiere Pro</span>
+        </div>
+        <div class="skill-pill">
+          <div class="skill-icon-ph"><img src="icons/indesign.png" alt="InDesign" width="24" height="24"/> </div>
+          <span>InDesign</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects section" id="projects">
+    <div class="container">
+      <div class="section-label">03 &middot; Projects</div>
+      <h2 class="section-title">My Work</h2>
+      <p class="section-sub">A selection of data science and analytics projects.</p>
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <!--
+            TO ADD PROJECT IMAGE: replace the .project-img-ph div with:
+            
+          -->
+          <div class="project-img-ph"><span><img src="projects/p2.png" alt="Project Name" class="project-img" /></span></div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-num">01</span>
+              <div class="project-tech-tags">
+                <span>Python</span><span>Machine Learning</span><span>Data Analysis</span>
+              </div>
+            </div>
+            <h3 class="project-title">Project Title One</h3>
+            <p class="project-desc">Describe your project - what problem it solves, dataset used, methods applied, and key results or insights produced.</p>
+            <div class="project-links">
+              <a href="#" class="project-btn" target="_blank">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                GitHub
+              </a>
+              <a href="#" class="project-btn project-btn-ghost" target="_blank">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                Live Demo
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-img-ph"><span><img src="projects/p1.png" alt="Project Name" class="project-img" /></span></div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-num">02</span>
+              <div class="project-tech-tags">
+                <span>Python</span><span>Power BI</span><span>SQL</span>
+              </div>
+            </div>
+            <h3 class="project-title">Project Title Two</h3>
+            <p class="project-desc">Describe your project - what problem it solves, dataset used, methods applied, and key results or insights produced.</p>
+            <div class="project-links">
+              <a href="#" class="project-btn" target="_blank">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                GitHub
+              </a>
+              <a href="#" class="project-btn project-btn-ghost" target="_blank">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                Live Demo
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATES -->
+  <section class="certificates section" id="certificates">
+    <div class="container">
+      <div class="section-label">04 &middot; Credentials</div>
+      <h2 class="section-title">Licenses &amp; Certificates</h2>
+      <p class="section-sub">11 professional certifications in data science, machine learning, and analytics.</p>
+      <div class="cert-grid">
+
+        <!-- CERT 01 -->
+        <!-- HOW TO USE:
+             1. Add your certificate image: replace .cert-img-ph div with <img src="assets/certs/cert1.jpg" alt="..." class="cert-img" />
+             2. Replace href="#" in Show Credential button with the actual certificate URL
+        -->
+        <div class="cert-card" data-index="01">
+          <div class="cert-img-ph">
+            
+            <span><img src="certs/cert1.jpg" alt="Machine Learning Specialization" class="cert-img" /> </span>
+          </div>
+          <div class="cert-info">
+            <h4>Specialization of Machine Learning</h4>
+            <p class="cert-issuer">DeepLearning.AI</p>
+            <p class="cert-date">Issued Sep 2025 &nbsp;&middot;&nbsp; ID: GCGJ7WNQL3TK</p>
+            <div class="cert-tags"><span>Data Ethics</span><span>Supervised Learning</span></div>
+            <a href="https://www.coursera.org/account/accomplishments/specialization/GCGJ7WNQL3TK" class="cert-credential-btn" target="_blank">
+              Show Credential
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- CERT 02 -->
+        <div class="cert-card" data-index="02">
+          <div class="cert-img-ph">
+            <!--  -->
+            <span><img src="certs/cert3.jpg" alt="Certificate Title 2" class="cert-img" /></span>
+          </div>
+          <div class="cert-info">
+            <h4>Advanced Learning Algorithms</h4>
+            <p class="cert-issuer">DeepLearning.AI</p>
+            <p class="cert-date">Issued Jul 2025 &nbsp;&middot;&nbsp; ID: 40HAAUISH7JE</p>
+            <div class="cert-tags"><span>Deep Learning</span><span>TensorFlow</span><span>Artificial Neural Networks</span></div>
+            <a href="https://www.coursera.org/account/accomplishments/verify/40HAAUISH7JE" class="cert-credential-btn" target="_blank">
+              Show Credential
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- CERT 03 -->
+        <div class="cert-card" data-index="03">
+          <div class="cert-img-ph">
+            <!--  -->
+            <span><img src="certs/cert2.jpg" alt="Certificate Title 3" class="cert-img" /></span>
+          </div>
+          <div class="cert-info">
+            <h4>Supervised Machine Learning: Regression and Classification </h4>
+            <p class="cert-issuer">DeepLearning.AI</p>
+            <p class="cert-date">Issued Jul 2025 &nbsp;&middot;&nbsp; ID: CV4UKB3RL6K5</p>
+            <div class="cert-tags"><span>Jupyter</span><span>Scikit-Learn</span><span>Predictive Modeling</span></div>
+            <a href="https://www.coursera.org/account/accomplishments/verify/CV4UKB3RL6K5" class="cert-credential-btn" target="_blank">
+              Show Credential
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- CERT 04 -->
+        <div class="cert-card" data-index="04">
+          <div class="cert-img-ph">
+            <!--  -->
+            <span><img src="certs/cert4.jpg" alt="Certificate Title 4" class="cert-img" /></span>
+          </div>
+          <div class="cert-info">
+            <h4>Ask Questions to Make Data Driven Decisions</h4>
+            <p class="cert-issuer">Google</p>
+            <p class="cert-date">Issued Jul 2025 &nbsp;&middot;&nbsp; ID: 1FNXM7HFE5HK</p>
+            <div class="cert-tags"><span>Problem Solving</span><span>Analytical Skills</span><span>Dashboards</span></div>
+            <a href="https://www.coursera.org/account/accomplishments/verify/1FNXM7HFE5HK" class="cert-credential-btn" target="_blank">
+              Show Credential
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- CERT 05 -->
+        <div class="cert-card" data-index="05">
+          <div class="cert-img-ph">
+            <!--  -->
+            <span><img src="certs/cert5.jpg" alt="Certificate Title 5" class="cert-img" /></span>
+          </div>
+          <div class="cert-info">
+            <h4>Foundations Data Data Everywhere</h4>
+            <p class="cert-issuer">Google</p>
+            <p class="cert-date">Issued Jul 2025 &nbsp;&middot;&nbsp; ID: 6O5J2KK8HMP8</p>
+            <div class="cert-tags"><span>Data Cleaning</span><span>Data Analysis</span></div>
+            <a href="https://www.coursera.org/account/accomplishments/verify/6O5J2KK8HMP8" class="cert-credential-btn" target="_blank">
+              Show Credential
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- CERT 06 -->
+        <div class="cert-card" data-index="06">
+          <div class="cert-img-ph">
+            <!--  -->
+            <span><img src="certs/cert6.jpg" alt="Certificate Title 6" class="cert-img" /></span>
+          </div>
+          <div class="cert-info">
+            <h4>Fundamentals of digital marketing</h4>
+            <p class="cert-issuer">Google</p>
+            <p class="cert-date">Issued Apr 2024 &nbsp;&middot;&nbsp; ID: 279927777</p>
+            <div class="cert-tags"><span>Search Engine Marketing</span><span>Video Marketing</span></div>
+            <a href="https://skillshop.exceedlms.com/student/award/yXjDRD5gyEctxBue3JD2NcH8" class="cert-credential-btn" target="_blank">
+              Show Credential
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- CERT 07 -->
+        <div class="cert-card" data-index="07">
+          <div class="cert-img-ph">
+            <!--  -->
+            <span><img src="certs/cert7.jpg" alt="Certificate Title 7" class="cert-img" /></span>
+          </div>
+          <div class="cert-info">
+            <h4>Career Essentials in System Administration by Microsoft and LinkedIn</h4>
+            <p class="cert-issuer">Microsoft</p>
+            <p class="cert-date">Issued Apr 2024 </p>
+            <div class="cert-tags"><span>Network Administration</span><span>Network Security</span><span>System Administration</span></div>
+            <a href="https://www.linkedin.com/learning/certificates/fbb120b1257caf0f7174e70fde8660dc65d49d8e92b173614dad98f56da39baa?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3BzJtgUp%2FHQDW9fPBmdcrAQA%3D%3D" class="cert-credential-btn" target="_blank">
+              Show Credential
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- CERT 08 -->
+        <div class="cert-card" data-index="08">
+          <div class="cert-img-ph">
+            <!--  -->
+            <span><img src="certs/cert8.jpg" alt="Certificate Title 8" class="cert-img" /></span>
+          </div>
+          <div class="cert-info">
+            <h4>Getting Started with R for Data Science</h4>
+            <p class="cert-issuer">LinkedIn</p>
+            <p class="cert-date">Issued May 2024 </p>
+            <div class="cert-tags"><span>Data Analysis</span><span>R (Programming Language)</span></div>
+            <a href="https://www.linkedin.com/learning/certificates/cee6e83bf98c0a9a587dd3a223f83ad6c6d38c401c15287e6fb91d3c62d6068b?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3BzJtgUp%2FHQDW9fPBmdcrAQA%3D%3D" class="cert-credential-btn" target="_blank">
+              Show Credential
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- CERT 09 -->
+        <div class="cert-card" data-index="09">
+          <div class="cert-img-ph">
+            <!--  -->
+            <span><img src="certs/cert9.jpg" alt="Certificate Title 9" class="cert-img" /></span>
+          </div>
+          <div class="cert-info">
+            <h4>Master Microsoft Excel</h4>
+            <p class="cert-issuer">Issuing Organization</p>
+            <p class="cert-date">Issued May 2024 </p>
+            <div class="cert-tags"><span>Microsoft Excel</span></div>
+            <a href="https://www.linkedin.com/learning/certificates/45cfd1328cb665c5463a5d14379ddeb56f5382a4bb0b66ff9f6603a645614cb1?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3BzJtgUp%2FHQDW9fPBmdcrAQA%3D%3D" class="cert-credential-btn" target="_blank">
+              Show Credential
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- CERT 10 -->
+        <div class="cert-card" data-index="10">
+          <div class="cert-img-ph">
+            <!--  -->
+            <span><img src="certs/cert10.jpg" alt="Certificate Title 10" class="cert-img" /></span>
+          </div>
+          <div class="cert-info">
+            <h4>Essential Skills in Adobe Premiere Pro</h4>
+            <p class="cert-issuer">Adobe</p>
+            <p class="cert-date">Issued May 2024 </p>
+            <div class="cert-tags"><span>Adobe Premiere Pro</span></div>
+            <a href="https://www.linkedin.com/learning/certificates/9f6537ed2378db8b4e691ba17376b29a65b7444034b6afeaffdf6cd8b8c4f223?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3BzJtgUp%2FHQDW9fPBmdcrAQA%3D%3D" class="cert-credential-btn" target="_blank">
+              Show Credential
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- CERT 11 -->
+        <div class="cert-card" data-index="11">
+          <div class="cert-img-ph">
+            <!--  -->
+            <span><img src="certs/cert11.jpg" alt="Certificate Title 11" class="cert-img" /></span>
+          </div>
+          <div class="cert-info">
+            <h4>Advance Your Video Editing Skills</h4>
+            <p class="cert-issuer">LinkedIn</p>
+            <p class="cert-date">Issued May 2024 </p>
+            <div class="cert-tags"><span>Video Editing</span></div>
+            <a href="https://www.linkedin.com/learning/certificates/0a36d27b34916721daffd20fb8f15d979fad6eb52cf2b3f9b035cf90dcd32fad?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3BzJtgUp%2FHQDW9fPBmdcrAQA%3D%3D" class="cert-credential-btn" target="_blank">
+              Show Credential
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="education section" id="education">
+    <div class="container">
+      <div class="section-label">05 &middot; Education</div>
+      <h2 class="section-title">Academic Journey</h2>
+      <div class="edu-grid">
+
+        <div class="edu-card">
+          <!--
+            TO ADD LOGO: replace .edu-logo-ph div with:
+            <img src="assets/logos/uoc.png" alt="University of Colombo" class="edu-logo" />
+          -->
+          <div class="edu-logo-ph"><span><img src="education/uoc.png" alt="UoC" class="edu-logo" /> </span></div>
+          <div class="edu-info">
+            <span class="edu-level">Undergraduate</span>
+            <h3>University of Colombo</h3>
+            <p class="edu-degree">BSc (Hons), Computational Mathematics</p>
+            <p class="edu-faculty">Faculty of Science</p>
+            <p class="edu-dates">May 2023 - May 2027</p>
+        
+          </div>
+        </div>
+
+        <div class="edu-card">
+          <div class="edu-logo-ph"><!--  --><span><img src="education/srck.png" alt="School" class="edu-logo" /></span></div>
+          <div class="edu-info">
+            <span class="edu-level">Advanced Level</span>
+            <h3>Sri Rahula College Katugastota</h3>
+            <p class="edu-degree">Physical Science / Mathematics Stream</p>
+            <p class="edu-faculty">Sri Lanka</p>
+            <p class="edu-dates">2018 - 2021</p>
+            
+          </div>
+        </div>
+
+        <div class="edu-card">
+          <div class="edu-logo-ph"><span><img src="education/srck.png" alt="School" class="edu-logo" /></span></div>
+          <div class="edu-info">
+            <span class="edu-level">Ordinary Level</span>
+            <h3>Sri Rahula College Katugastota</h3>
+            <p class="edu-degree">General Certificate of Education (O/L)</p>
+            <p class="edu-faculty">Sri Lanka</p>
+            <p class="edu-dates">2007 - 2018</p>
+            
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <div class="section-label">06 &middot; Contact</div>
+      <h2 class="section-title">Let's Connect</h2>
+      <p class="section-sub">Open to collaborations, opportunities, and conversations about data.</p>
+      <div class="contact-grid">
+
+        <!--
+          TO ADD CONTACT ICONS: replace .contact-logo-ph div with:
+          <img src="assets/logos/gmail.png" alt="Email" class="contact-logo" />
+        -->
+        <a href="https://mail.google.com/mail/?view=cm&to=2022s19398@stu.cmb.ac.lk" class="contact-card">
+          <div class="contact-logo-ph">
+            <!--  -->
+            <span><img src="icons/gmail.png" alt="Gmail" class="contact-logo" width="48" height="48" /></span>
+          </div>
+          <div class="contact-info">
+            <span class="contact-label">Email</span>
+            <span class="contact-value"><span class="__cf_email__" data-cfemail="132123212160222a202a2b536067663d707e713d72703d7f78">2022s19398@stu.cmb.ac.lk</span></span>
+          </div>
+          <div class="contact-arrow">&#8594;</div>
+        </a>
+
+        <a href="www.linkedin.com/in/saranga-nuwan-hathurusinghe-0b599229a" target="_blank" class="contact-card">
+          <div class="contact-logo-ph">
+            <!--  -->
+            <span><img src="icons/linkedin.png" alt="LinkedIn" class="contact-logo" /></span>
+          </div>
+          <div class="contact-info">
+            <span class="contact-label">LinkedIn</span>
+            <span class="contact-value">Saranga Nuwan Hathurusinghe</span>
+          </div>
+          <div class="contact-arrow">&#8594;</div>
+        </a>
+
+        <a href="https://github.com/sara316129" target="_blank" class="contact-card">
+          <div class="contact-logo-ph">
+            <!--  -->
+            <span><img src="icons/gitnew.png" alt="GitHub" class="contact-logo" /></span>
+          </div>
+          <div class="contact-info">
+            <span class="contact-label">GitHub</span>
+            <span class="contact-value">sara316129</span>
+          </div>
+          <div class="contact-arrow">&#8594;</div>
+        </a>
+
+        <a href="tel:+94XXXXXXXXX" class="contact-card">
+          <div class="contact-logo-ph">
+            <!--  -->
+            <span><img src="icons/phone.png" alt="Phone" class="contact-logo" /></span>
+          </div>
+          <div class="contact-info">
+            <span class="contact-label">Phone</span>
+            <span class="contact-value">+94 76 1981426</span>
+          </div>
+          <div class="contact-arrow">&#8594;</div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Saranga Nuwan Hathurusinghe 
+      <p class="footer-sub">All Rights Reserved
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
