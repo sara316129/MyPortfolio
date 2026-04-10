@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Superstore Sales Dashboard - Saranga Nuwan</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="project.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar scrolled" id="navbar">
+    <a href="../index.html" class="nav-logo">SNH<span class="dot">.</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html#home">Home</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#certificates">Certificates</a></li>
+      <li><a href="../index.html#education">Education</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- PROJECT HERO -->
+  <section class="proj-hero">
+    <div class="proj-hero-bg"></div>
+    <div class="container">
+      <div class="proj-breadcrumb">
+        <a href="../index.html#projects">← Back to Projects</a>
+      </div>
+      <div class="proj-hero-content">
+        <div class="proj-meta-top">
+          <span class="proj-category-tag">Data Analytics</span>
+          <span class="proj-category-tag">Visualization</span>
+          <span class="proj-category-tag">SQL</span>
+          <span class="proj-category-tag">Power BI</span>
+        </div>
+        <h1 class="proj-title">Superstore Sales &amp;<br/><span class="proj-title-accent">Customer Insights</span><br/>Dashboard</h1>
+        <p class="proj-subtitle">An interactive multi-page Power BI dashboard built on the Superstore Sales dataset - visualizing customer behavior, sales trends, and regional performance with SQL-driven data preparation and DAX-powered measures.</p>
+        <div class="proj-tools-row">
+          <span class="proj-tool"><img src="../icons/sql.png" alt="SQL" width="18" height="18"/> SSMS / SQL Server</span>
+          <span class="proj-tool"><img src="../icons/powerbi.png" alt="Power BI" width="18" height="18"/> Power BI</span>
+          <span class="proj-tool">DAX</span>
+          <span class="proj-tool">Kaggle Dataset</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DASHBOARD PREVIEW -->
+  <section class="proj-section" id="preview">
+    <div class="container">
+      <div class="proj-section-label">Dashboard Preview</div>
+      <h2 class="proj-section-title">Final Output</h2>
+      <p class="proj-section-sub">Two interactive pages - Sales Summary and Customer Insights - designed for stakeholder decision making.</p>
+
+      <div class="dashboard-grid">
+        <div class="dashboard-card">
+          <div class="dashboard-img-wrap">
+            <img src="Visualizasion-1.png" alt="Sales Data Summary Dashboard" />
+          </div>
+          <div class="dashboard-label">
+            <span class="dashboard-num">Page 01</span>
+            <h3>Sales Data Summary</h3>
+            <p>KPIs, top customers & products, regional sales breakdown, growth vs last year, and top cities performance.</p>
+          </div>
+        </div>
+        <div class="dashboard-card">
+          <div class="dashboard-img-wrap">
+            <img src="Visualizasion-2.png" alt="Customer Insights Dashboard" />
+          </div>
+          <div class="dashboard-label">
+            <span class="dashboard-num">Page 02</span>
+            <h3>Customer Insights</h3>
+            <p>Per-customer sales trends, top product categories, profit by year, purchase history, and geographic location map.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS STEPS -->
+  <section class="proj-section proj-section-alt" id="process">
+    <div class="container">
+      <div class="proj-section-label">How It Was Built</div>
+      <h2 class="proj-section-title">Step-by-Step Process</h2>
+
+      <div class="steps-list">
+
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-body">
+            <h3>Data Collection</h3>
+            <p>Downloaded the <strong>Superstore Sales dataset</strong> from Kaggle - a real-world retail dataset containing 9,994 rows across orders, customers, products, regions, and returns. Imported into SQL Server (SSMS) as the starting point.</p>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div class="step-body">
+            <h3>Data Cleaning &amp; Preparation (SQL)</h3>
+            <p>Used SQL queries to clean and prepare the data before loading into Power BI:</p>
+            <ul class="step-list">
+              <li>Removed null values and duplicate rows</li>
+              <li>Fixed incorrect data types (dates, numeric fields)</li>
+              <li>Created derived columns: <code>Year</code>, <code>Month</code>, <code>Profit Flag</code></li>
+              <li>Joined <strong>Orders</strong>, <strong>Returns</strong>, and <strong>People</strong> tables with LEFT JOINs</li>
+              <li>Used <code>COALESCE</code> to handle missing return status values</li>
+              <li>Rounded sales figures with <code>ROUND()</code> for consistency</li>
+            </ul>
+
+            <!-- SQL CODE BLOCK -->
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">SQL — Data Preparation Query</span>
+                <button class="code-copy-btn" onclick="copyCode(this)">Copy</button>
+              </div>
+              <pre><code>SELECT
+  o.Order_ID,
+  o.Order_Date,
+  o.Ship_Date,
+  o.Ship_Mode,
+  o.Customer_ID,
+  o.Customer_Name,
+  o.Segment,
+  o.Country,
+  o.City,
+  o.State,
+  o.Postal_Code,
+  o.Region,
+  p.Person AS Region_Manager,
+  o.Product_ID,
+  o.Category,
+  o.Sub_Category,
+  o.Product_Name,
+  o.Quantity,
+  ROUND(o.Sales, 2)         AS Sales,
+  ROUND(o.Profit, 2)        AS Profit,
+  ROUND(o.Discount, 2)      AS Discount,
+  YEAR(o.Order_Date)        AS Order_Year,
+  MONTH(o.Order_Date)       AS Order_Month,
+  COALESCE(r.Returned, 'No') AS Returned,
+  CASE
+    WHEN o.Profit > 0 THEN 'Profitable'
+    ELSE 'Loss'
+  END AS Profit_Flag
+
+FROM [Order] o
+LEFT JOIN [Return]  r ON o.Order_ID = r.Order_ID
+LEFT JOIN  People   p ON o.Region   = p.Region;</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-body">
+            <h3>Power BI Modeling</h3>
+            <p>Loaded the cleaned SQL query result into Power BI Desktop and set up the data model:</p>
+            <ul class="step-list">
+              <li>Established relationships between Order, Customer, and Product tables</li>
+              <li>Created a separate <strong>Date table</strong> for time-intelligence functions</li>
+              <li>Defined calculated columns for segmentation and grouping</li>
+              <li>Built all key measures using DAX (see below)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">04</div>
+          <div class="step-body">
+            <h3>DAX Measures</h3>
+            <p>Created custom DAX measures to power the KPIs, growth indicators, and profit margin calculations across both dashboard pages.</p>
+
+            <!-- DAX CODE BLOCKS -->
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">DAX — Total Sales &amp; Profit</span>
+                <button class="code-copy-btn" onclick="copyCode(this)">Copy</button>
+              </div>
+              <pre><code>Total Sales =
+SUM(Query1[Sales])
+
+Total Profit =
+SUM(Query1[Profit])
+
+Total Discount =
+SUM(Query1[Discount])
+
+Profit Margin % =
+DIVIDE(
+    SUM(Query1[Profit]),
+    SUM(Query1[Sales]),
+    0
+) * 100</code></pre>
+            </div>
+
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">DAX — Year-over-Year Sales Growth</span>
+                <button class="code-copy-btn" onclick="copyCode(this)">Copy</button>
+              </div>
+              <pre><code>Target Sales (YoY with Base) =
+VAR SelectedYear  = SELECTEDVALUE(Query1[Order_Date].[Year])
+VAR BaseTarget    = 400000
+VAR PrevYear      = SelectedYear - 1
+
+VAR PrevYearSales =
+    CALCULATE(
+        SUM(Query1[Sales]),
+        FILTER(
+            ALL(Query1),
+            YEAR(Query1[Order_Date]) = PrevYear
+        )
+    )
+
+VAR Target =
+    IF(
+        ISBLANK(PrevYearSales),
+        BaseTarget,
+        PrevYearSales * 1.10
+    )
+
+RETURN Target</code></pre>
+            </div>
+
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">DAX — Yearly Profit Margin Goal</span>
+                <button class="code-copy-btn" onclick="copyCode(this)">Copy</button>
+              </div>
+              <pre><code>Yearly Profit Margin % =
+VAR CurrentMargin =
+    DIVIDE(
+        CALCULATE(SUM(Query1[Profit])),
+        CALCULATE(SUM(Query1[Sales])),
+        0
+    ) * 100
+
+VAR GoalMargin = 12.00
+
+RETURN
+    IF(
+        CurrentMargin >= GoalMargin,
+        CurrentMargin,
+        CurrentMargin
+    )</code></pre>
+            </div>
+
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">DAX — Customer-Level Metrics</span>
+                <button class="code-copy-btn" onclick="copyCode(this)">Copy</button>
+              </div>
+              <pre><code>Total Orders =
+DISTINCTCOUNT(Query1[Order_ID])
+
+Total Items =
+SUM(Query1[Quantity])
+
+Total Order Amount =
+CALCULATE(
+    SUM(Query1[Sales]),
+    ALLEXCEPT(Query1, Query1[Customer_ID])
+)</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">05</div>
+          <div class="step-body">
+            <h3>Dashboard Design</h3>
+            <p>Designed two connected dashboard pages in Power BI with a consistent blue-white theme:</p>
+            <ul class="step-list">
+              <li><strong>Sales Summary Page:</strong> Overall KPIs (Total Sales $2.30M, Total Profit $286.82K), YoY growth indicator, top 5 customers bar chart, sales by region donut chart, top 10 products table with profit margin, top 10 cities clustered bar chart</li>
+              <li><strong>Customer Insights Page:</strong> Customer-level selector with dynamic profile card, sales by year area chart, top 3 categories bar chart, product purchase history table, profit by year waterfall chart, geographic map of customer cities</li>
+              <li>Navigation panel with slicers for Year, Region Manager, Category, Sub Category, and Returns filter</li>
+              <li>Cross-page navigation button: "Customer Insights" ↔ "Sales Data"</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">06</div>
+          <div class="step-body">
+            <h3>Challenges &amp; Solutions</h3>
+            <div class="challenges-grid">
+              <div class="challenge-item">
+                <div class="challenge-icon">●</div>
+                <div>
+                  <h4>DAX Context Filtering</h4>
+                  <p>Profit margin and growth rate measures gave incorrect results due to filter context issues. Resolved using <code>CALCULATE</code>, <code>ALL()</code>, and <code>FILTER()</code> to explicitly control evaluation context.</p>
+                </div>
+              </div>
+              <div class="challenge-item">
+                <div class="challenge-icon">●</div>
+                <div>
+                  <h4>Performance Optimization</h4>
+                  <p>Report was slow with large table visuals. Fixed by reducing unnecessary column imports, optimizing SQL query to load only required fields, and minimizing redundant visuals per page.</p>
+                </div>
+              </div>
+              <div class="challenge-item">
+                <div class="challenge-icon">●</div>
+                <div>
+                  <h4>Filter Conflicts</h4>
+                  <p>Slicers on one page were affecting unintended visuals. Managed using Power BI's <strong>Edit Interactions</strong> panel and <strong>Sync Slicers</strong> to control exactly which visuals respond to each filter.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- KEY RESULTS -->
+  <section class="proj-section" id="results">
+    <div class="container">
+      <div class="proj-section-label">Outcomes</div>
+      <h2 class="proj-section-title">Key Results</h2>
+      <div class="results-grid">
+        <div class="result-card">
+          <span class="result-num">$2.30M</span>
+          <span class="result-label">Total Sales Tracked</span>
+        </div>
+        <div class="result-card">
+          <span class="result-num">12.80%</span>
+          <span class="result-label">Profit Margin Achieved</span>
+        </div>
+        <div class="result-card">
+          <span class="result-num">9,994</span>
+          <span class="result-label">Rows Processed via SQL</span>
+        </div>
+        <div class="result-card">
+          <span class="result-num">2 Pages</span>
+          <span class="result-label">Interactive Dashboard Pages</span>
+        </div>
+      </div>
+      <div class="proj-summary-box">
+        <p>This dashboard enables stakeholders to quickly identify key customers, profitable products, and high growth regions - supporting strategic decisions through clear, interactive visual insights. The combination of SQL for data preparation and Power BI + DAX for modeling demonstrates an end to end analytics workflow.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BACK NAVIGATION -->
+  <section class="proj-nav-footer">
+    <div class="container">
+      <a href="../index.html#projects" class="back-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        Back to Projects
+      </a>
+      <a href="../index.html#contact" class="contact-proj-btn">Let's Talk About This Project →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Saranga Nuwan Hathurusinghe &middot; Built with purpose.</p>
+      <p class="footer-sub">BSc (Hons) Computational Mathematics &middot; University of Colombo</p>
+    </div>
+  </footer>
+
+  <script src="project.js"></script>
+</body>
+</html>
