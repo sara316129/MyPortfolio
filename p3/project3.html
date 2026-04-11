@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Motion Graphics — After Effects · Saranga Nuwan</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="project.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar scrolled" id="navbar">
+    <a href="index.html" class="nav-logo">SNH<span class="dot">.</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html#home">Home</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#certificates">Certificates</a></li>
+      <li><a href="../index.html#education">Education</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="proj-hero proj-hero-mg">
+    <div class="proj-hero-bg"></div>
+    <div class="mg-hero-reel">
+      <img src="shoe.jpg"          alt="" class="mg-reel-img" loading="eager" />
+      <img src="circuit_lines.jpg" alt="" class="mg-reel-img" loading="eager" />
+      <img src="countdown.jpg"     alt="" class="mg-reel-img" loading="eager" />
+      <img src="food1.jpg"         alt="" class="mg-reel-img" loading="eager" />
+    </div>
+    <div class="container">
+      <div class="proj-breadcrumb">
+        <a href="../index.html#projects">← Back to Projects</a>
+      </div>
+      <div class="proj-hero-content">
+        <div class="proj-meta-top">
+          <span class="proj-category-tag">Motion Graphics</span>
+          <span class="proj-category-tag">After Effects</span>
+          <span class="proj-category-tag">Visual Design</span>
+        </div>
+        <h1 class="proj-title">Motion Graphics<br/><span class="proj-title-accent">Reel</span></h1>
+        <p class="proj-subtitle">A collection of motion graphics and animated advertisements built in Adobe After Effects - spanning product ads, neon circuit animations, countdown timers, and cinematic story sequences.</p>
+        <div class="proj-tools-row">
+          <span class="proj-tool">Adobe After Effects</span>
+          <span class="proj-tool">Saber Plugin</span>
+          <span class="proj-tool">Cinema 4D Renderer</span>
+          <span class="proj-tool">Photoshop</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section class="proj-section" id="overview">
+    <div class="container">
+      <div class="proj-section-label">Overview</div>
+      <h2 class="proj-section-title">What's in This Reel</h2>
+      <p class="proj-section-sub">Five distinct motion projects, each exploring a different style, technique, and purpose from commercial product advertising to abstract visual effects.</p>
+
+      <div class="mg-overview-grid">
+        <div class="mg-overview-card">
+          <span class="mg-overview-num">01</span>
+          <h3>Nike Product Ad</h3>
+          <p>Animated advertisement featuring Nike shoes and cap with smooth kinetic typography, floating circle elements, and layered product reveals.</p>
+        </div>
+        <div class="mg-overview-card">
+          <span class="mg-overview-num">02</span>
+          <h3>Circuit Lines</h3>
+          <p>Neon circuit board animation built with the Saber plugin - glowing light paths tracing across a dark background with multi colour gradient strokes.</p>
+        </div>
+        <div class="mg-overview-card">
+          <span class="mg-overview-num">03</span>
+          <h3>Countdown Timer</h3>
+          <p>Animated countdown sequence with glowing circular ring and number reveals using the Saber plugin's core shape feature and mask evolution.</p>
+        </div>
+        <div class="mg-overview-card">
+          <span class="mg-overview-num">04</span>
+          <h3>Food Menu Ad</h3>
+          <p>3D style burger menu advertisement with rotating product cards, bold typography, price reveals, and animated geometric background shapes.</p>
+        </div>
+        <div class="mg-overview-card">
+          <span class="mg-overview-num">05</span>
+          <h3>Cinematic Story</h3>
+          <p>Atmospheric black and white cinematic sequence with three spotlight shafts, a silhouetted figure, CC Spotlight effect, and film grain noise.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT 01 — NIKE AD -->
+  <section class="proj-section proj-section-alt" id="nike-ad">
+    <div class="container">
+      <div class="proj-section-label">Project 01</div>
+      <h2 class="proj-section-title">Nike Product Advertisement</h2>
+      <p class="proj-section-sub">Two scenes - a shoe ad and a cap ad - assembled into a single composition with shared circle elements and brand typography.</p>
+
+      <div class="mg-project-layout">
+        <div class="mg-screenshots">
+          <div class="mg-shot-main">
+            <img src="shoe.jpg" alt="Nike Shoe Ad — Elevate your look" loading="lazy" />
+            
+          </div>
+          <div class="mg-shot-main">
+            <img src="cap.jpg" alt="Nike Cap Ad — Trendy designs" loading="lazy" />
+            
+          </div>
+        </div>
+        <div class="mg-project-details">
+          <div class="mg-detail-block">
+            <h4>Composition Structure</h4>
+            <p>Each product scene is a separate pre composition nested inside a master "Final" composition. This keeps the timeline clean and allows independent editing of each scene without affecting the overall render.</p>
+          </div>
+          <div class="mg-detail-block">
+            <h4>Key Techniques</h4>
+            <ul class="step-list">
+              <li>Kinetic typography with <strong>Range Selector Offset</strong> animation for text reveal</li>
+              <li>Floating blurred circle elements animated with <strong>Position keyframes</strong> for depth</li>
+              <li>Product PNG layers with <strong>Position + Rotation</strong> keyframed entry</li>
+              <li>Nike logo placed as a static branding layer above all content</li>
+              <li>Adjustment layer for global colour correction across scenes</li>
+            </ul>
+          </div>
+          <div class="mg-spec-row">
+            <div class="mg-spec"><span class="mg-spec-label">Duration</span><span class="mg-spec-val">10 sec per scene</span></div>
+            <div class="mg-spec"><span class="mg-spec-label">Frame Rate</span><span class="mg-spec-val">29.97 fps</span></div>
+            <div class="mg-spec"><span class="mg-spec-label">Resolution</span><span class="mg-spec-val">1920 × 1080</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT 02 — CIRCUIT LINES -->
+  <section class="proj-section" id="circuit">
+    <div class="container">
+      <div class="proj-section-label">Project 02</div>
+      <h2 class="proj-section-title">Neon Circuit Lines</h2>
+      <p class="proj-section-sub">A glowing circuit board animation using the Saber effect - multi coloured neon paths draw themselves across a dark background.</p>
+
+      <div class="mg-project-layout mg-project-layout-reverse">
+        <div class="mg-project-details">
+          <div class="mg-detail-block">
+            <h4>Saber Plugin Setup</h4>
+            <p>Each glowing path is a separate shape layer with the <strong>Saber effect</strong> applied in Add blend mode. The Start Offset and End Offset properties are keyframed so each line draws on progressively, simulating circuit board activation.</p>
+          </div>
+          <div class="mg-detail-block">
+            <h4>Key Techniques</h4>
+            <ul class="step-list">
+              <li>Shape layers drawn as angular paths to mimic PCB trace geometry</li>
+              <li>Saber effect in <strong>Add blend mode</strong> for natural glow compositing on dark backgrounds</li>
+              <li>Node circles animated with <strong>Position keyframes</strong> - appearing as connection points light up</li>
+              <li>Multiple Saber layers staggered in time to create a sequential draw-on effect</li>
+              <li>Colour variation across layers - cyan, magenta, orange, green - for multi channel visual</li>
+            </ul>
+          </div>
+          <div class="mg-spec-row">
+            <div class="mg-spec"><span class="mg-spec-label">Duration</span><span class="mg-spec-val">10 sec</span></div>
+            <div class="mg-spec"><span class="mg-spec-label">Frame Rate</span><span class="mg-spec-val">29.97 fps</span></div>
+            <div class="mg-spec"><span class="mg-spec-label">Resolution</span><span class="mg-spec-val">1920 × 1080</span></div>
+          </div>
+        </div>
+        <div class="mg-screenshots">
+          <div class="mg-shot-main">
+            <img src="circuit lines.jpg" alt="Neon Circuit Lines Animation" loading="lazy" />
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT 03 — COUNTDOWN -->
+  <section class="proj-section proj-section-alt" id="countdown">
+    <div class="container">
+      <div class="proj-section-label">Project 03</div>
+      <h2 class="proj-section-title">Countdown Timer</h2>
+      <p class="proj-section-sub">An animated countdown with dual colour glowing rings and bold number reveals - built using Saber's text layer core type.</p>
+
+      <div class="mg-project-layout">
+        <div class="mg-screenshots">
+          <div class="mg-shot-main">
+            <img src="countdown.jpg" alt="Countdown Timer Animation" loading="lazy" />
+            
+          </div>
+        </div>
+        <div class="mg-project-details">
+          <div class="mg-detail-block">
+            <h4>Saber Core Type - Text Layer</h4>
+            <p>Instead of a drawn path, Saber's <strong>Core Type</strong> is set to "Text Layer" - the glow follows the outline of a number character. As the number changes each second, the ring reshapes itself around the new digit automatically.</p>
+          </div>
+          <div class="mg-detail-block">
+            <h4>Key Techniques</h4>
+            <ul class="step-list">
+              <li><strong>Mask Evolution</strong> keyframed to rotate the glow ring continuously around each number</li>
+              <li>Two Saber layers stacked - one orange, one blue - offset by 180° for dual-colour ring effect</li>
+              <li>Start Offset and End Offset held at 60% to create an arc rather than a full circle</li>
+              <li>Glow Circle pre-composition with a Black Solid beneath for clean compositing</li>
+              <li>Glow Intensity 48%, Glow Spread 0.38, Core Size 3.00 for soft broadcast quality glow</li>
+            </ul>
+          </div>
+          <div class="mg-spec-row">
+            <div class="mg-spec"><span class="mg-spec-label">Duration</span><span class="mg-spec-val">1 sec per digit</span></div>
+            <div class="mg-spec"><span class="mg-spec-label">Frame Rate</span><span class="mg-spec-val">29.97 fps</span></div>
+            <div class="mg-spec"><span class="mg-spec-label">Glow Colours</span><span class="mg-spec-val">Blue + Orange</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT 04 — FOOD AD -->
+  <section class="proj-section" id="food-ad">
+    <div class="container">
+      <div class="proj-section-label">Project 04</div>
+      <h2 class="proj-section-title">Food Menu Advertisement</h2>
+      <p class="proj-section-sub">A multi scene animated burger menu ad with 3D card rotations, bold price reveals, and animated background shapes - designed for social media or restaurant display.</p>
+
+      <div class="mg-project-layout mg-project-layout-reverse">
+        <div class="mg-project-details">
+          <div class="mg-detail-block">
+            <h4>Multi Scene Structure</h4>
+            <p>The composition contains four separate menu scenes (Scene 1-4), each featuring a different burger product. Each scene is a pre composition that enters and exits via <strong>Y Rotation and Z Rotation keyframes</strong> on the Classic 3D renderer - giving the card flip transition effect.</p>
+          </div>
+          <div class="mg-detail-block">
+            <h4>Key Techniques</h4>
+            <ul class="step-list">
+              <li><strong>Classic 3D renderer</strong> enabled for Y axis rotation card-flip transitions between scenes</li>
+              <li>Drop Shadow effect on each scene pre comp for depth and separation from background</li>
+              <li>Polystar shape layers in the background - rotated continuously as decorative elements</li>
+              <li>Product PNG layers animated with Position keyframes to slide in from off screen</li>
+              <li>Text layers for Item Name, Description, and Price each animated separately with staggered entry</li>
+              <li>Bold contrasting colour blocks - teal/red, orange/green - for visual hierarchy per scene</li>
+            </ul>
+          </div>
+          <div class="mg-spec-row">
+            <div class="mg-spec"><span class="mg-spec-label">Duration</span><span class="mg-spec-val">40 sec total</span></div>
+            <div class="mg-spec"><span class="mg-spec-label">Frame Rate</span><span class="mg-spec-val">29.97 fps</span></div>
+            <div class="mg-spec"><span class="mg-spec-label">Scenes</span><span class="mg-spec-val">4 products</span></div>
+          </div>
+        </div>
+        <div class="mg-screenshots">
+          <div class="mg-shot-main">
+            <img src="food1.jpg" alt="Burger Small Ad Scene" loading="lazy" />
+            
+          </div>
+          <div class="mg-shot-main" style="margin-top:16px;">
+            <img src="food2.jpg" alt="Burger Large Ad Scene" loading="lazy" />
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT 05 — STORY -->
+  <section class="proj-section proj-section-alt" id="story">
+    <div class="container">
+      <div class="proj-section-label">Project 05</div>
+      <h2 class="proj-section-title">Cinematic Story Sequence</h2>
+      <p class="proj-section-sub">A dramatic black and white cinematic piece - three spotlight shafts, a lone silhouette, film grain, and high contrast curves create an atmospheric narrative opening.</p>
+
+      <div class="mg-project-layout">
+        <div class="mg-screenshots">
+          <div class="mg-shot-main">
+            <img src="story.jpg" alt="Cinematic Story Animation" loading="lazy" />
+            
+          </div>
+        </div>
+        <div class="mg-project-details">
+          <div class="mg-detail-block">
+            <h4>Lighting Setup</h4>
+            <p>Three <strong>White Solid</strong> layers in Screen blend mode form the spotlight shafts. Each solid is masked with a tall tapered shape. The <strong>CC Spotlight</strong> effect is keyframed on the adjustment layer - animating the From and To coordinates to sweep the light beam across the scene over time.</p>
+          </div>
+          <div class="mg-detail-block">
+            <h4>Key Techniques</h4>
+            <ul class="step-list">
+              <li>White Solid layers in <strong>Screen blend mode</strong> for additive light blending over a black background</li>
+              <li><strong>CC Spotlight effect</strong> keyframed on the adjustment layer - From (911.6, 436.5) To (934.5, 487.8)</li>
+              <li><strong>Film grain noise</strong> via the Noise effect (Amount 20%) on a separate adjustment layer for a classic cinematic texture</li>
+              <li><strong>Curves effect</strong> on the adjustment layer - steepened S curve for high contrast black and white toning</li>
+              <li>Silhouette figure layer ("men") composited in Normal mode at the base of the light columns</li>
+              <li>Cinema 4D renderer enabled for depth-aware compositing</li>
+            </ul>
+          </div>
+          <div class="mg-spec-row">
+            <div class="mg-spec"><span class="mg-spec-label">Duration</span><span class="mg-spec-val">30+ sec</span></div>
+            <div class="mg-spec"><span class="mg-spec-label">Renderer</span><span class="mg-spec-val">Cinema 4D</span></div>
+            <div class="mg-spec"><span class="mg-spec-label">Colour</span><span class="mg-spec-val">B&amp;W + Curves</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS USED -->
+  <section class="proj-section" id="tools">
+    <div class="container">
+      <div class="proj-section-label">Technical Notes</div>
+      <h2 class="proj-section-title">Tools &amp; Techniques</h2>
+
+      <div class="mg-tools-grid">
+
+        <div class="mg-tool-card">
+          <div class="mg-tool-header">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <h4>Adobe After Effects 2020</h4>
+          </div>
+          <p>Primary compositing and animation tool. Used for keyframe animation, pre-composition workflow, blend modes, masks, and the Classic 3D and Cinema 4D renderers.</p>
+        </div>
+
+        <div class="mg-tool-card">
+          <div class="mg-tool-header">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            <h4>Saber Plugin</h4>
+          </div>
+          <p>Third-party After Effects plugin used for glowing neon stroke effects. Applied in the circuit lines, countdown timer, and wherever high quality glow paths were needed. Supports Core Type Text Layer for shape following glows.</p>
+        </div>
+
+        <div class="mg-tool-card">
+          <div class="mg-tool-header">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+            <h4>CC Spotlight &amp; Noise</h4>
+          </div>
+          <p>Built-in After Effects effects used in the cinematic story sequence. CC Spotlight creates the animated light beam sweep, while the Noise effect adds analogue film grain texture.</p>
+        </div>
+
+        <div class="mg-tool-card">
+          <div class="mg-tool-header">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            <h4>Keyframe Animation</h4>
+          </div>
+          <p>All motion is driven by hand-crafted keyframes - Position, Rotation, Scale, Opacity, and effect specific properties. Range Selector Offset for text reveals, Mask Evolution for rotating glow rings, and Start/End Offset for Saber draw on animations.</p>
+        </div>
+
+        <div class="mg-tool-card">
+          <div class="mg-tool-header">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <h4>Pre-Composition Workflow</h4>
+          </div>
+          <p>Complex projects use a layered pre-comp structure - individual scenes or elements are pre composed and nested into a master timeline. This keeps projects manageable and allows 3D layer ordering and blend mode isolation per group.</p>
+        </div>
+
+        <div class="mg-tool-card">
+          <div class="mg-tool-header">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <h4>Classic 3D &amp; Cinema 4D Renderers</h4>
+          </div>
+          <p>Classic 3D renderer used for card flip transitions in the food ad via Y/Z Rotation. Cinema 4D renderer enabled in the cinematic story for depth-aware layer ordering and advanced compositing.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM NAV -->
+  <section class="proj-nav-footer">
+    <div class="container">
+      <a href="index.html#projects" class="back-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        Back to Projects
+      </a>
+      <a href="index.html#contact" class="contact-proj-btn">Let's Talk About This Project →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p>2026 Saranga Nuwan Hathurusinghe </p>
+      <p class="footer-sub">ⓒ All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <script src="project.js"></script>
+</body>
+</html>
