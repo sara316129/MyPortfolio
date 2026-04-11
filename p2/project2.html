@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Monte Carlo 3D Center of Mass - Saranga Nuwan</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="project.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar scrolled" id="navbar">
+    <a href="index.html" class="nav-logo">SNH<span class="dot">.</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html#home">Home</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#certificates">Certificates</a></li>
+      <li><a href="../index.html#education">Education</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="proj-hero">
+    <div class="proj-hero-bg"></div>
+    <div class="container">
+      <div class="proj-breadcrumb">
+        <a href="../index.html#projects">← Back to Projects</a>
+      </div>
+      <div class="proj-hero-content">
+        <div class="proj-meta-top">
+          <span class="proj-category-tag">Computational Mathematics</span>
+          <span class="proj-category-tag">Monte Carlo</span>
+          <span class="proj-category-tag">Random Number Theory</span>
+          <span class="proj-category-tag">Group Project · 3 Members</span>
+        </div>
+        <h1 class="proj-title">Finding Center of<br/><span class="proj-title-accent">Mass of 3D Objects</span></h1>
+        <p class="proj-subtitle">A group project (3 members) from the Random Number Theory course - estimating the Center of Mass of 3D shapes using Monte Carlo Methods with a custom Multiple Recursive Generator (MRG), Ray Casting, and Voxelization. Built with interactive Tkinter visualizations.</p>
+        <div class="proj-tools-row">
+          <span class="proj-tool">Python</span>
+          <span class="proj-tool">NumPy</span>
+          <span class="proj-tool">Trimesh</span>
+          <span class="proj-tool">Matplotlib</span>
+          <span class="proj-tool">Tkinter</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT IS CENTER OF MASS -->
+  <section class="proj-section" id="concept">
+    <div class="container">
+      <div class="proj-section-label">The Concept</div>
+      <h2 class="proj-section-title">What is Center of Mass?</h2>
+      <p class="proj-section-sub">The point where all the mass of an object is concentrated - the balance point.</p>
+
+      <div class="concept-grid">
+        <div class="concept-card">
+          <div class="concept-icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v1M3 12h2m14 0h2M5.6 5.6l1.4 1.4m9.6-1.4-1.4 1.4M8 16H5l3-6 3 6H8zm8 0h-3l3-6 3 6h-3zM12 4a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/><line x1="5" y1="16" x2="19" y2="16"/><line x1="12" y1="4" x2="12" y2="21"/></svg></div>
+          <h3>Mathematical Definition</h3>
+          <p>The Center of Mass is the average position of all mass points inside a 3D object, expressed as a coordinate triplet:</p>
+          <div class="concept-formula">
+            <code>COM = ( x_bar, y_bar, z_bar )</code>
+          </div>
+          <ul class="step-list" style="margin-top:16px;">
+            <li><strong>x_bar</strong> = Average of all x coordinates of interior points</li>
+            <li><strong>y_bar</strong> = Average of all y coordinates of interior points</li>
+            <li><strong>z_bar</strong> = Average of all z coordinates of interior points</li>
+          </ul>
+        </div>
+        <div class="concept-card concept-card-accent">
+          <div class="concept-icon-text">∫∫∫</div>
+          <h3>Calculus Formula</h3>
+          <p>The exact analytical formula uses triple integrals over the volume of the object:</p>
+          <div class="concept-formula">
+            <code>x_bar = ∫∫∫ x dV / ∫∫∫ dV</code>
+          </div>
+          <div class="concept-formula" style="margin-top:8px;">
+            <code>y_bar = ∫∫∫ y dV / ∫∫∫ dV</code>
+          </div>
+          <div class="concept-formula" style="margin-top:8px;">
+            <code>z_bar = ∫∫∫ z dV / ∫∫∫ dV</code>
+          </div>
+          <p style="margin-top:14px; font-size:0.88rem; color:var(--text-dim);">For irregular or complex 3D shapes, these integrals are extremely difficult or impossible to solve analytically. That is where Monte Carlo comes in.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MONTE CARLO IDEA -->
+  <section class="proj-section proj-section-alt" id="montecarlo">
+    <div class="container">
+      <div class="proj-section-label">The Core Idea</div>
+      <h2 class="proj-section-title">Monte Carlo Method</h2>
+      <p class="proj-section-sub">Instead of solving complex integrals, generate thousands of random points inside the shape and average their coordinates. More points = more accurate result.</p>
+
+      <div class="steps-list">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-body">
+            <h3>Generate Random Points</h3>
+            <p>Generate <strong>N random points</strong> inside the 3D bounding box of the object using a <strong>Multiple Recursive Generator (MRG)</strong> - a custom pseudo-random number generator that produces high-quality uniform sequences in [0, 1], then maps them to the bounding box range.</p>
+            <div class="info-highlight">
+              <span class="info-icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1" fill="currentColor"/><circle cx="12" cy="12" r="1" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1" fill="currentColor"/></svg></span>
+              <span>Our MRG uses three separate linear recurrence sequences combined to produce numbers with excellent statistical properties - far better than simple generators for Monte Carlo applications.</span>
+            </div>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div class="step-body">
+            <h3>Test Which Points Are Inside the Object</h3>
+            <p>For each random point, determine whether it falls inside or outside the 3D shape. This is the key challenge - the method used depends on whether we have a mathematical equation for the shape or not.</p>
+            <div class="two-cases-row">
+              <div class="case-mini-card">
+                <span class="case-badge">Case 1</span>
+                <h4>Known Function</h4>
+                <p>Use the shape's equation directly. If the point satisfies the equation → it is INSIDE.</p>
+              </div>
+              <div class="case-mini-card case-mini-accent">
+                <span class="case-badge">Case 2</span>
+                <h4>Unknown Shape</h4>
+                <p>No equation exists (e.g. a stone). Use Ray Casting or Voxelization to test inside/outside.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-body">
+            <h3>Calculate the Center of Mass</h3>
+            <p>Collect all points that are confirmed to be inside the object. Calculate the average of their x, y, and z coordinates separately. This average position is the estimated Center of Mass.</p>
+            <div class="concept-formula" style="width:fit-content;">
+              <code>COM_x = (1/N) × Σ xᵢ &nbsp;|&nbsp; COM_y = (1/N) × Σ yᵢ &nbsp;|&nbsp; COM_z = (1/N) × Σ zᵢ</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE 1 -->
+  <section class="proj-section" id="case1">
+    <div class="container">
+      <div class="proj-section-label">Case 1</div>
+      <h2 class="proj-section-title">Known Function - Sphere</h2>
+      <p class="proj-section-sub">When the 3D shape is defined by a mathematical equation, we use the equation directly to test each random point.</p>
+
+      <div class="example-box">
+        <div class="example-header">
+          <span class="example-label">Example 01 - Sphere with Radius 5</span>
+          <div class="concept-formula"><code>x² + y² + z² ≤ 25</code></div>
+        </div>
+        <div class="example-steps-grid">
+          <div class="ex-step">
+            <div class="ex-step-num">1</div>
+            <div>
+              <h4>Generate Random Points</h4>
+              <p>Generate 3×10³ random points using MRG. Map output [0,1] to bounding box range.</p>
+            </div>
+          </div>
+          <div class="ex-step">
+            <div class="ex-step-num">2</div>
+            <div>
+              <h4>Define Bounding Box</h4>
+              <p>x ∈ [−5, 5], y ∈ [−5, 5], z ∈ [−5, 5] - a cube that completely encloses the sphere.</p>
+            </div>
+          </div>
+          <div class="ex-step">
+            <div class="ex-step-num">3</div>
+            <div>
+              <h4>Test Each Point</h4>
+              <p>If x² + y² + z² ≤ 25 → the point is INSIDE the sphere. Otherwise discard it.</p>
+            </div>
+          </div>
+          <div class="ex-step">
+            <div class="ex-step-num">4</div>
+            <div>
+              <h4>Calculate Average</h4>
+              <p>Average the x, y, z coordinates of all inside points. This gives the estimated Center of Mass.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div class="results-comparison">
+        <h3 class="result-subtitle">Results - Sphere (3,000 points)</h3>
+        <div class="result-row">
+          <div class="result-col">
+            <span class="result-col-label">Monte Carlo Estimate</span>
+            <div class="result-coords">
+              <span>(0.04, 0.08, −0.05)</span>
+            </div>
+          </div>
+          <div class="result-vs">vs</div>
+          <div class="result-col">
+            <span class="result-col-label">Exact Center of Mass</span>
+            <div class="result-coords result-coords-exact">
+              <span>(0, 0, 0)</span>
+            </div>
+          </div>
+          <div class="result-verdict">
+            <span class="badge badge-green">Close Result</span>
+            <p>Error: 0.1014</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Convergence -->
+      <div class="convergence-box">
+        <div class="convergence-icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div>
+          <h4>Increasing N Reduces Error</h4>
+          <p>When we increased the sample points by ×10 (from 3,000 to 30,000), the error dropped from <strong>0.1014</strong> to <strong>0.0330</strong> - demonstrating the core Monte Carlo principle: more random samples → narrower error → more accurate result.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE 2 INTRO -->
+  <section class="proj-section proj-section-alt" id="case2">
+    <div class="container">
+      <div class="proj-section-label">Case 2</div>
+      <h2 class="proj-section-title">Unknown Shape - No Equation</h2>
+      <p class="proj-section-sub">What if we have an irregular 3D object like a stone, an airplane, or a character model - and there is no mathematical formula?</p>
+
+      <div class="unknown-shape-grid">
+        <div class="shape-example-card">
+          <div class="shape-label-icon">Rock</div>
+          <h4>Stone</h4>
+          <p>Completely irregular surface - no equation exists</p>
+        </div>
+        <div class="shape-example-card">
+          <div class="shape-label-icon">Aircraft</div>
+          <h4>Airplane</h4>
+          <p>Complex geometry with wings, fuselage, and engines</p>
+        </div>
+        <div class="shape-example-card">
+          <div class="shape-label-icon">3D Character</div>
+          <h4>3D Character</h4>
+          <p>Organic humanoid shape - impossible to express analytically</p>
+        </div>
+      </div>
+
+      <div class="info-highlight" style="margin-top:32px;">
+        <span class="info-icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg></span>
+        <span>For Case 2, we need a different way to test if a point is inside the object. We explored and compared two methods: <strong>Ray Casting</strong> and <strong>Voxelization</strong>.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- RAY CASTING -->
+  <section class="proj-section" id="raycasting">
+    <div class="container">
+      <div class="proj-section-label">Method 1</div>
+      <h2 class="proj-section-title">Ray Casting Algorithm</h2>
+
+      <div class="steps-list">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-body">
+            <h3>Load the Mesh</h3>
+            <p>Import the 3D object file (<code>.obj</code> or <code>.stl</code>) and extract the bounding box - the minimum and maximum coordinates along each axis.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div class="step-body">
+            <h3>Generate Random Points</h3>
+            <p>Generate N random points in the bounding box using the Multiple Recursive Generator (MRG).</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-body">
+            <h3>Shoot a Ray</h3>
+            <p>From each random point, shoot a ray in a fixed direction (e.g. the +Z axis). Count how many times the ray intersects (hits) the mesh surface triangles.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">04</div>
+          <div class="step-body">
+            <h3>Odd / Even Rule</h3>
+            <p>Apply the classic parity rule:</p>
+            <ul class="step-list">
+              <li>Ray hits an <strong>ODD</strong> number of surfaces → point is <span style="color:var(--accent)">INSIDE</span></li>
+              <li>Ray hits an <strong>EVEN</strong> number of surfaces → point is <span style="color:#f38ba8">OUTSIDE</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="method-verdict-card method-verdict-bad">
+        <div class="verdict-icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <div>
+          <h4>Conclusion: Too Slow</h4>
+          <p>Ray Casting is highly accurate - but every single ray must traverse and check every triangle in the mesh. This makes the time complexity very high. Even with just <strong>1,000 points</strong>, the computation time was unacceptably slow for a Monte Carlo simulation that needs hundreds of thousands of samples.</p>
+          <div class="verdict-tags">
+            <span class="badge badge-green">Accuracy: Very High</span>
+            <span class="badge badge-red">Speed: Very Slow</span>
+            <span class="badge badge-red">Rejected</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VOXELIZATION -->
+  <section class="proj-section proj-section-alt" id="voxelization">
+    <div class="container">
+      <div class="proj-section-label">Method 2</div>
+      <h2 class="proj-section-title">Voxelization + Monte Carlo</h2>
+      <p class="proj-section-sub">Pre compute a 3D grid of the shape once, then use O(1) lookups for every random sample point.</p>
+
+      <div class="steps-list">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-body">
+            <h3>Load the Mesh &amp; Generate Random Numbers</h3>
+            <p>Import the 3D object file (<code>.obj</code> or <code>.stl</code>) and extract the bounding box. Generate the random sample points using MRG at the same time.</p>
+            <div class="two-shapes-row">
+              <div class="shape-vis-card">
+                <div class="shape-vis-label">Normal Sphere - 3D Mesh</div>
+                <img src="spear.png" alt="Sphere 3D Mesh" class="shape-vis-img" />
+              </div>
+              <div class="shape-vis-card">
+                <div class="shape-vis-label">Stone - Irregular Mesh</div>
+                <img src="rock.png" alt="Stone 3D Mesh" class="shape-vis-img" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div class="step-body">
+            <h3>Voxelization - Convert Mesh to a 3D Grid</h3>
+            <p>Divide the entire bounding box into a 3D grid of small cubes called <strong>voxels</strong>. Each voxel is marked as either:</p>
+            <ul class="step-list">
+              <li><strong>Filled (1)</strong> - the voxel is inside the mesh</li>
+              <li><strong>Empty (0)</strong> - the voxel is outside the mesh</li>
+            </ul>
+            <p>Smaller voxel size = finer grid = more accurate boundary representation, but more memory usage.</p>
+            <div class="voxel-size-compare">
+              <div class="voxel-card">
+                <span class="voxel-size-label">Voxel Size: 2</span>
+                <p>Coarse grid - fewer voxels, less detail, faster pre compute</p>
+              </div>
+              <div class="voxel-card voxel-card-accent">
+                <span class="voxel-size-label">Voxel Size: 1</span>
+                <p>Fine grid - more voxels, higher accuracy, more memory</p>
+              </div>
+            </div>
+            <div class="info-highlight" style="margin-top:16px;">
+              <span class="info-icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></span>
+              <span>The voxel grid is essentially a 3D binary array - like a building made of Lego blocks where each block is either filled (inside) or empty (outside).</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-body">
+            <h3>Map Random Numbers to Grid Indices</h3>
+            <p>Convert the random numbers from [0, 1] range into grid index coordinates [0, grid_size] for each axis:</p>
+            <ul class="step-list">
+              <li><code>x_index = random_x × grid_width</code></li>
+              <li><code>y_index = random_y × grid_height</code></li>
+              <li><code>z_index = random_z × grid_depth</code></li>
+            </ul>
+
+            <!-- Worked example -->
+            <div class="worked-example">
+              <div class="worked-example-header">Worked Example - Voxel Size: 0.1 &nbsp;|&nbsp; Grid: 201×201×201 &nbsp;|&nbsp; N = 3×10⁴</div>
+              <div class="worked-example-body">
+                <p>Given random values: <code>u_x = 0.764, u_y = 0.241, u_z = 0.412</code></p>
+                <div class="calc-row"><span>x_index</span><span>=</span><span>0.764 × 201 = 153.564 ≈ <strong>153</strong></span></div>
+                <div class="calc-row"><span>y_index</span><span>=</span><span>0.241 × 201 = 48.441 &nbsp;≈ <strong>48</strong></span></div>
+                <div class="calc-row"><span>z_index</span><span>=</span><span>0.412 × 201 = 82.812 &nbsp;≈ <strong>82</strong></span></div>
+                <div class="calc-result">Grid coordinate = <strong>(153, 48, 82)</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">04</div>
+          <div class="step-body">
+            <h3>Test Each Point - O(1) Lookup</h3>
+            <p>Check the pre-computed voxel grid at the mapped grid coordinate. This is a single array lookup - O(1) per point:</p>
+            <ul class="step-list">
+              <li>If <code>voxel[x, y, z] = 1</code> → point is <strong style="color:var(--accent)">INSIDE</strong> the object</li>
+              <li>If <code>voxel[x, y, z] = 0</code> → point is <strong style="color:#f38ba8">OUTSIDE</strong> the object</li>
+            </ul>
+            <p>This is what makes Voxelization + Monte Carlo so fast - the expensive computation (building the grid) happens only once. Each of the N random samples just reads a single value from the array.</p>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">05</div>
+          <div class="step-body">
+            <h3>Calculate Center of Mass</h3>
+            <p>Average the coordinates of all points confirmed to be inside the object:</p>
+            <ul class="step-list">
+              <li><code>COM_x = mean(all inside x values)</code></li>
+              <li><code>COM_y = mean(all inside y values)</code></li>
+              <li><code>COM_z = mean(all inside z values)</code></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Example Results -->
+      <h3 class="result-subtitle" style="margin-bottom:20px;">Results</h3>
+      <div class="example-results-grid">
+        <div class="example-result-card">
+          <div class="example-result-header">
+            <span class="example-result-num">Example 01</span>
+            <span>Normal Sphere &nbsp;|&nbsp; Grid: 201×201×201 &nbsp;|&nbsp; N = 30,000</span>
+          </div>
+          <div class="example-result-body">
+            <div class="result-imgs-row">
+              <div class="result-img-wrap">
+                <span class="result-img-label">Voxel Grid</span>
+                <img src="spear_voxel.png" alt="Sphere Voxelization" />
+              </div>
+              <div class="result-img-wrap">
+                <span class="result-img-label">COM Result</span>
+                <img src="spear_com.png" alt="Sphere Center of Mass Result" />
+              </div>
+            </div>
+            <div class="result-row" style="flex-wrap:wrap; gap:16px; margin-top:16px;">
+              <div class="result-col">
+                <span class="result-col-label">COM in Grid Coordinates</span>
+                <div class="result-coords"><span>(99.7, 99.7, 99.5)</span></div>
+              </div>
+              <div class="result-col">
+                <span class="result-col-label">Error</span>
+                <div class="result-coords"><span style="font-size:2rem;">0.1497</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="example-result-card">
+          <div class="example-result-header">
+            <span class="example-result-num">Example 02</span>
+            <span>Stone &nbsp;|&nbsp; Grid: 139×168×68 &nbsp;|&nbsp; N = 300,000</span>
+          </div>
+          <div class="example-result-body">
+            <div class="result-imgs-row">
+              <div class="result-img-wrap">
+                <span class="result-img-label">Voxel Grid</span>
+                <img src="rock_voxel.png" alt="Stone Voxelization" />
+              </div>
+              <div class="result-img-wrap">
+                <span class="result-img-label">COM Result</span>
+                <img src="rock_com.png" alt="Stone Center of Mass Result" />
+              </div>
+            </div>
+            <div class="result-row" style="flex-wrap:wrap; gap:16px; margin-top:16px;">
+              <div class="result-col">
+                <span class="result-col-label">COM in Grid Coordinates</span>
+                <div class="result-coords"><span>(70.7, 93.5, 32.4)</span></div>
+              </div>
+              <div class="result-col">
+                <span class="result-col-label">Error</span>
+                <div class="result-coords"><span style="font-size:2rem;">0.1101</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METHOD COMPARISON -->
+  <section class="proj-section" id="comparison">
+    <div class="container">
+      <div class="proj-section-label">Analysis</div>
+      <h2 class="proj-section-title">Why Not Voxelization Alone?</h2>
+      <p class="proj-section-sub">We also compared Voxelization alone (without Monte Carlo) against Voxelization + Monte Carlo.</p>
+
+      <div class="method-table-wrap">
+        <table class="method-table">
+          <thead>
+            <tr>
+              <th>Criterion</th>
+              <th>Voxelization Only</th>
+              <th>Voxelization + Monte Carlo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Time Complexity</strong></td>
+              <td><code>O(n³)</code> - must check every single voxel in the grid</td>
+              <td><code>O(N)</code> - only checks N random samples</td>
+            </tr>
+            <tr>
+              <td><strong>Space Complexity</strong></td>
+              <td><code>O(n³)</code> - must store all filled voxel coordinates</td>
+              <td><code>O(N)</code> - only stores the samples that hit</td>
+            </tr>
+            <tr class="method-winner">
+              <td><strong>Accuracy</strong></td>
+              <td><span class="badge badge-green">High (10/10)</span></td>
+              <td><span class="badge badge-green">High (9/10) - improves as N increases</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="method-detail-grid" style="margin-top:28px;">
+        <div class="method-detail-card">
+          <div class="method-icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 4h8l1 5H7L8 4z"/><rect x="7" y="9" width="10" height="7" rx="1"/><path d="M9 16v4M15 16v4"/><circle cx="12" cy="5.5" r="0.5" fill="currentColor"/></svg></div>
+          <h4>Ray Casting</h4>
+          <p>Very accurate but requires a full mesh traversal for each point. Time complexity is too high - even 1,000 points was unacceptably slow. <strong>Rejected.</strong></p>
+          <div style="margin-top:12px;">
+            <span class="badge badge-green">Accuracy: High</span>&nbsp;
+            <span class="badge badge-red">Speed: Very Slow</span>
+          </div>
+        </div>
+        <div class="method-detail-card">
+          <div class="method-icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+          <h4>Voxelization Only</h4>
+          <p>Accurate but must check every voxel - O(n³) complexity grows quickly and becomes memory intensive at high grid resolutions. <strong>Not optimal.</strong></p>
+          <div style="margin-top:12px;">
+            <span class="badge badge-green">Accuracy: High</span>&nbsp;
+            <span class="badge badge-yellow">Speed: Moderate</span>
+          </div>
+        </div>
+        <div class="method-detail-card method-detail-winner">
+          <div class="method-icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <h4>Monte Carlo + Voxelization</h4>
+          <p>Pre-compute the grid once, then only check N random samples with O(1) lookups. Fast, accurate, and scalable. <strong>Best choice.</strong></p>
+          <div style="margin-top:12px;">
+            <span class="badge badge-green">Accuracy: High</span>&nbsp;
+            <span class="badge badge-green">Speed: Fast</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEY RESULTS -->
+  <section class="proj-section proj-section-alt" id="results">
+    <div class="container">
+      <div class="proj-section-label">Outcomes</div>
+      <h2 class="proj-section-title">Key Results</h2>
+
+      <div class="results-grid">
+        <div class="result-card">
+          <span class="result-num">300K</span>
+          <span class="result-label">Max Random Points Generated</span>
+        </div>
+        <div class="result-card">
+          <span class="result-num">O(N)</span>
+          <span class="result-label">Final Algorithm Complexity</span>
+        </div>
+        <div class="result-card">
+          <span class="result-num">3</span>
+          <span class="result-label">Methods Evaluated</span>
+        </div>
+        <div class="result-card">
+          <span class="result-num">~0.11</span>
+          <span class="result-label">Best Error at N=300K</span>
+        </div>
+      </div>
+
+      <!-- Limitations -->
+      <h3 class="result-subtitle" style="margin: 40px 0 20px;">Limitations</h3>
+      <div class="limitations-grid">
+        <div class="limitation-card">
+          <span class="limitation-tag">Constraint</span>
+          <h4>Closed Objects Only</h4>
+          <p>The method requires a watertight (fully closed) 3D mesh. Open or hollow shell meshes will produce incorrect inside/outside tests.</p>
+        </div>
+        <div class="limitation-card">
+          <span class="limitation-tag">Assumption</span>
+          <h4>Uniform Mass Distribution</h4>
+          <p>Assumes all mass is distributed uniformly throughout the object. Non-uniform density (e.g. hollow interior, denser core) is not accounted for.</p>
+        </div>
+        <div class="limitation-card">
+          <span class="limitation-tag">Requirement</span>
+          <h4>Requires a 3D Model</h4>
+          <p>The shape must exist as a 3D mesh file (.obj, .stl, etc.). Physical objects need to be 3D scanned or modelled first.</p>
+        </div>
+      </div>
+
+      <div class="proj-summary-box" style="margin-top:36px;">
+        <p>By combining a custom Multiple Recursive Generator with Voxelization, we achieved near exact Center of Mass estimation at O(N) complexity - proving that combining the right methods from Random Number Theory makes all the difference in computational geometry.</p>
+      </div>
+
+      <div class="team-note">
+        <div class="team-icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div>
+          <h4>Group Project 3 Members</h4>
+          <p>This was a collaborative effort by a team of 3 members as part of the Random Number Theory course at the University of Colombo, Faculty of Science.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD APP -->
+  <section class="proj-section" id="download">
+    <div class="container">
+      <div class="proj-section-label">Try It Yourself</div>
+      <h2 class="proj-section-title">Download the Application</h2>
+      <p class="proj-section-sub">The Monte Carlo COM Calculator is packaged as an installable desktop app. Hosted on Google Drive due to its size (~190 MB).</p>
+
+      <div class="download-card">
+        <div class="download-card-left">
+          <div class="download-icon-wrap">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </div>
+          <div class="download-info">
+            <h3>Monte Carlo COM Calculator</h3>
+            <p>Interactive desktop app - choose a shape, set N, visualise the 3D scatter and estimated Center of Mass in real time.</p>
+            <div class="download-meta">
+              <span>Python · Tkinter · Matplotlib</span>
+              <span class="download-sep">·</span>
+              <span>~190 MB</span>
+              <span class="download-sep">·</span>
+              <span>Windows Installer</span>
+            </div>
+          </div>
+        </div>
+        <a href="https://drive.google.com/file/d/14cvWeSCu059KchWzqeUPkV583i5jTn9K/view?usp=sharing" class="download-btn" target="_blank">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download App
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BOTTOM NAV -->
+  <section class="proj-nav-footer">
+    <div class="container">
+      <a href="index.html#projects" class="back-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        Back to Projects
+      </a>
+      <a href="project1.html" class="back-btn">← View Project 01</a>
+      <a href="index.html#contact" class="contact-proj-btn">Let's Talk About This Project →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Saranga Nuwan Hathurusinghe &middot; Built with purpose.</p>
+      <p class="footer-sub">BSc (Hons) Computational Mathematics &middot; University of Colombo</p>
+    </div>
+  </footer>
+
+  <script src="project.js"></script>
+</body>
+</html>
