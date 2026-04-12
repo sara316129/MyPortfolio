@@ -39,7 +39,7 @@
       <div class="proj-hero-content">
 
         <h1 class="proj-title">Superstore Sales &amp;<br/><span class="proj-title-accent">Customer Insights</span><br/>Dashboard</h1>
-        <p class="proj-subtitle">An interactive multi-page Power BI dashboard built on the Superstore Sales dataset - visualizing customer behavior, sales trends, and regional performance with SQL-driven data preparation and DAX-powered measures.</p>
+        <p class="proj-subtitle">An interactive multi page Power BI dashboard built on the Superstore Sales dataset - visualizing customer behavior, sales trends, and regional performance with SQL-driven data preparation and DAX-powered measures.</p>
         <div class="proj-tools-row">
           <span class="proj-tool">SSMS / SQL Server</span>
           <span class="proj-tool">Power BI</span>
@@ -115,7 +115,7 @@
             <!-- SQL CODE BLOCK -->
             <div class="code-block">
               <div class="code-header">
-                <span class="code-lang">SQL — Data Preparation Query</span>
+                <span class="code-lang">SQL - Data Preparation Query</span>
                 <button class="code-copy-btn" onclick="copyCode(this)">Copy</button>
               </div>
               <pre><code>SELECT
@@ -156,7 +156,7 @@ LEFT JOIN  People   p ON o.Region   = p.Region;</code></pre>
             <!-- SQL screenshot — SSMS showing the query running with results -->
             <div class="sql-screenshot-wrap">
               <img src="sql.webp" alt="SQL Server Management Studio — data preparation query executing with 9,994 rows returned" loading="lazy" />
-              <span class="sql-screenshot-caption">SSMS — query executed successfully · 9,994 rows</span>
+              <span class="sql-screenshot-caption">SSMS - query executed successfully · 9,994 rows</span>
             </div>
 
           </div>
@@ -169,7 +169,7 @@ LEFT JOIN  People   p ON o.Region   = p.Region;</code></pre>
             <p>Loaded the cleaned SQL query result into Power BI Desktop and set up the data model:</p>
             <ul class="step-list">
               <li>Established relationships between Order, Customer, and Product tables</li>
-              <li>Created a separate <strong>Date table</strong> for time-intelligence functions</li>
+              <li>Created a separate <strong>Date table</strong> for time intelligence functions</li>
               <li>Defined calculated columns for segmentation and grouping</li>
               <li>Built all key measures using DAX (see below)</li>
             </ul>
@@ -185,7 +185,7 @@ LEFT JOIN  People   p ON o.Region   = p.Region;</code></pre>
             <!-- DAX CODE BLOCKS -->
             <div class="code-block">
               <div class="code-header">
-                <span class="code-lang">DAX — Total Sales &amp; Profit</span>
+                <span class="code-lang">DAX - Total Sales &amp; Profit</span>
                 <button class="code-copy-btn" onclick="copyCode(this)">Copy</button>
               </div>
               <pre><code>Total Sales =
@@ -236,7 +236,7 @@ RETURN Target</code></pre>
 
             <div class="code-block">
               <div class="code-header">
-                <span class="code-lang">DAX — Yearly Profit Margin Goal</span>
+                <span class="code-lang">DAX - Yearly Profit Margin Goal</span>
                 <button class="code-copy-btn" onclick="copyCode(this)">Copy</button>
               </div>
               <pre><code>Yearly Profit Margin % =
@@ -281,12 +281,12 @@ CALCULATE(
           <div class="step-num">05</div>
           <div class="step-body">
             <h3>Dashboard Design</h3>
-            <p>Designed two connected dashboard pages in Power BI with a consistent blue-white theme:</p>
+            <p>Designed two connected dashboard pages in Power BI with a consistent blue white theme:</p>
             <ul class="step-list">
               <li><strong>Sales Summary Page:</strong> Overall KPIs (Total Sales $2.30M, Total Profit $286.82K), YoY growth indicator, top 5 customers bar chart, sales by region donut chart, top 10 products table with profit margin, top 10 cities clustered bar chart</li>
-              <li><strong>Customer Insights Page:</strong> Customer-level selector with dynamic profile card, sales by year area chart, top 3 categories bar chart, product purchase history table, profit by year waterfall chart, geographic map of customer cities</li>
+              <li><strong>Customer Insights Page:</strong> Customer level selector with dynamic profile card, sales by year area chart, top 3 categories bar chart, product purchase history table, profit by year waterfall chart, geographic map of customer cities</li>
               <li>Navigation panel with slicers for Year, Region Manager, Category, Sub Category, and Returns filter</li>
-              <li>Cross-page navigation button: "Customer Insights" ↔ "Sales Data"</li>
+              <li>Cross page navigation button: "Customer Insights" ↔ "Sales Data"</li>
             </ul>
           </div>
         </div>
@@ -359,7 +359,7 @@ CALCULATE(
     <div class="container">
       <div class="proj-section-label">Project Demo</div>
       <h2 class="proj-section-title">See It in Action</h2>
-      <p class="proj-section-sub">A walkthrough of the full workflow — SQL data preparation, DAX measure building, and the interactive Power BI dashboards.</p>
+      <p class="proj-section-sub">A walkthrough of the summery workflow - SQL data preparation, DAX measure building, and the interactive Power BI dashboards.</p>
 
       <div class="demo-video-solo">
         <video controls controlsList="nodownload" preload="auto" poster="Visualizasion-1.png"
@@ -384,8 +384,8 @@ CALCULATE(
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
-      <p>&copy; 2025 Saranga Nuwan Hathurusinghe &middot; Built with purpose.</p>
-      <p class="footer-sub">BSc (Hons) Computational Mathematics &middot; University of Colombo</p>
+      <p>&copy; 2026 Saranga Nuwan Hathurusinghe </p>
+      <p class="footer-sub">All Rights Reserved</p>
     </div>
   </footer>
 
