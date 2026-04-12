@@ -984,21 +984,17 @@
    ========================================================= */
 
 /* ─── HERO WITH REEL STRIP ─── */
-.proj-hero-mg { padding-top: 0; min-height: 80vh; }
-.mg-hero-reel {
-  position: absolute; inset: 0;
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  overflow: hidden; z-index: 0;
+.proj-hero-mg {
+  padding-top: 0;
+  min-height: 80vh;
+  position: relative;
 }
-.mg-reel-img {
-  width: 100%; height: 100%;
-  object-fit: cover; display: block;
-  filter: brightness(0.18) saturate(0.4);
-  transition: filter 0.4s;
-}
-.proj-hero-mg:hover .mg-reel-img { filter: brightness(0.22) saturate(0.5); }
-.mg-reel-img:nth-child(2) { filter: brightness(0.22) saturate(0.4); }
-.proj-hero-mg .container { padding-top: 120px; padding-bottom: 80px; }
+
+/* Hide the grid background and pseudo-element glows on the video hero
+   — the video + inline overlay handles everything */
+.proj-hero-mg .proj-hero-bg { display: none; }
+.proj-hero-mg::before      { display: none; }
+.proj-hero-mg::after       { display: none; }
 
 /* ─── OVERVIEW GRID ─── */
 .mg-overview-grid {
@@ -1161,5 +1157,5 @@
 @media (max-width: 600px) {
   .mg-overview-grid { grid-template-columns: 1fr 1fr; }
   .mg-tools-grid    { grid-template-columns: 1fr; }
-  .mg-hero-reel     { grid-template-columns: repeat(2, 1fr); }
+  /* mg-hero-reel no longer used — single <video id="bgVideo"> handles background */
 }
