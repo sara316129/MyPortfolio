@@ -456,6 +456,102 @@
 .contact-proj-btn:hover { background: #fff; }
 
 /* ─── RESPONSIVE ─── */
+
+/* ─── SQL SCREENSHOT ─── */
+.sql-screenshot-wrap {
+  margin-top: 24px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #0c0e18;
+  position: relative;
+}
+.sql-screenshot-wrap img {
+  width: 100%;
+  display: block;
+  border-radius: 12px 12px 0 0;
+}
+.sql-screenshot-caption {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-xdim);
+  padding: 10px 16px;
+  border-top: 1px solid var(--border);
+  background: rgba(0,229,255,0.03);
+}
+
+/* ─── PROJECT DEMO VIDEO ─── */
+.demo-video-wrap {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 32px;
+  align-items: start;
+}
+.demo-video-wrap video {
+  width: 100%;
+  display: block;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: #050609;
+  outline: none;
+}
+.demo-video-wrap video:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(0,229,255,0.15);
+}
+
+.demo-video-chapters {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  position: sticky;
+  top: 100px;
+}
+.demo-chapter {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition: 0.3s;
+  cursor: default;
+}
+.demo-chapter:hover {
+  border-color: rgba(0,229,255,0.25);
+  background: rgba(0,229,255,0.04);
+}
+.demo-chapter-time {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+}
+.demo-chapter-label {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .demo-video-wrap {
+    grid-template-columns: 1fr;
+  }
+  .demo-video-chapters {
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+}
+@media (max-width: 560px) {
+  .demo-video-chapters { grid-template-columns: 1fr; }
+}
+
 @media (max-width: 1024px) {
   .results-grid { grid-template-columns: repeat(2, 1fr); }
 }
