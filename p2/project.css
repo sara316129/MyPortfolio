@@ -979,3 +979,120 @@
   .download-btn  { text-align: center; justify-content: center; }
   .result-imgs-row { grid-template-columns: 1fr; }
 }
+/* ----------------------------------------------------------------
+   MOBILE FIXES - comprehensive fixes for small screens
+   ---------------------------------------------------------------- */
+
+/* --- concept formula: allow wrapping instead of horizontal scroll --- */
+.concept-formula code {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* --- worked example header: allow long grid labels to wrap --- */
+.worked-example-header {
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* --- example result header: wrap text gracefully --- */
+.example-result-header {
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* --- result-row: prevent coordinate text overflow --- */
+.result-row {
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .download-card { flex-direction: column; align-items: stretch; }
+  .download-btn  { text-align: center; justify-content: center; }
+  .result-imgs-row { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+
+  /* General spacing tightening */
+  .proj-section { padding: 60px 0; }
+
+  /* Hero title size floor */
+  .proj-title { font-size: clamp(2rem, 9vw, 3rem); }
+
+  /* concept-formula: tighter padding so code doesn't clip */
+  .concept-formula { padding: 10px 12px; overflow-x: auto; }
+  .concept-formula code { font-size: 0.74rem; }
+
+  /* step-card: reduce gap on very small screens */
+  .step-card { gap: 12px; padding: 28px 0; }
+  .step-num  { font-size: 2rem; }
+
+  /* calc-row: collapse the fixed 80px label column */
+  .calc-row {
+    grid-template-columns: 1fr;
+    gap: 2px;
+    margin-bottom: 14px;
+    font-size: 0.78rem;
+  }
+  .calc-row span:nth-child(2) { display: none; }
+
+  /* result-coords: scale down the big coordinate text */
+  .result-coords { font-size: 1.4rem; }
+  .result-coords span { font-size: 1.4rem; }
+
+  /* results-comparison: tighten padding */
+  .results-comparison { padding: 20px 18px; }
+
+  /* method-table: reduce font */
+  .method-table th,
+  .method-table td { font-size: 0.78rem; padding: 10px 12px; }
+
+  /* example-result-header: stack label and desc */
+  .example-result-header { flex-direction: column; align-items: flex-start; }
+  .example-result-num    { font-size: 1rem; }
+
+  /* worked-example-body: reduce font */
+  .worked-example-body p { font-size: 0.82rem; }
+  .worked-example-header { font-size: 0.64rem; padding: 8px 14px; }
+
+  /* download-card-left: stack icon + text */
+  .download-card-left { flex-direction: column; gap: 14px; }
+  .download-icon-wrap { width: 48px; height: 48px; border-radius: 10px; }
+  .download-btn { padding: 14px 20px; font-size: 0.72rem; }
+
+  /* convergence-box: reduce gap on very small */
+  .convergence-box { flex-direction: column; gap: 12px; }
+  .convergence-icon-svg { width: 28px; height: 28px; }
+
+  /* team-note: stack icon + text */
+  .team-note { flex-direction: column; gap: 12px; }
+
+  /* proj-nav-footer buttons: full width stack */
+  .proj-nav-footer .container { flex-direction: column; align-items: stretch; gap: 12px; }
+  .back-btn        { font-size: 0.72rem; }
+  .contact-proj-btn { text-align: center; justify-content: center; padding: 14px 20px; }
+
+  /* info-highlight: tighten padding */
+  .info-highlight { padding: 12px 14px; font-size: 0.84rem; }
+
+  /* result-card: slightly smaller stat numbers */
+  .result-num { font-size: 2.2rem; }
+
+  /* proj-summary-box */
+  .proj-summary-box { padding: 20px 18px; }
+
+  /* badge spacing in verdict tags */
+  .verdict-tags { gap: 6px; }
+  .badge { font-size: 0.64rem; padding: 3px 8px; }
+}
+
+@media (max-width: 380px) {
+  /* Extra small phones (iPhone SE etc.) */
+  .proj-title  { font-size: 1.9rem; }
+  .result-num  { font-size: 1.8rem; }
+  .result-coords { font-size: 1.2rem; }
+  .step-body h3  { font-size: 1rem; }
+  .code-block code { font-size: 0.68rem; }
+  .proj-section { padding: 48px 0; }
+}
