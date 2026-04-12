@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Motion Graphics - After Effects · Saranga Nuwan</title>
+  <title>Motion Graphics — After Effects · Saranga Nuwan</title>
   <link rel="stylesheet" href="../style.css" />
   <link rel="stylesheet" href="project.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,21 +30,30 @@
   </nav>
 
   <!-- HERO -->
-  <section class="proj-hero proj-hero-mg">
-    <div class="proj-hero-bg"></div>
-    <div class="mg-hero-reel">
-      <img src="shoe.jpg"          alt="" class="mg-reel-img" loading="eager" />
-      <img src="circuit lines.jpg" alt="" class="mg-reel-img" loading="eager" />
-      <img src="countdown.jpg"     alt="" class="mg-reel-img" loading="eager" />
-      <img src="food1.jpg"         alt="" class="mg-reel-img" loading="eager" />
-    </div>
-    <div class="container">
+  <section class="proj-hero proj-hero-mg" style="position:relative; min-height:80vh; overflow:hidden; background:#0a0b0f;">
+
+    <!-- Single full-hero video — JS switches product.mp4 → food.mp4 → loop -->
+    <video id="bgVideo" autoplay muted playsinline
+      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;filter:brightness(0.15) saturate(0.35);pointer-events:none;">
+      <source src="product.mp4" type="video/mp4" />
+    </video>
+
+    <!-- Dark overlay: gradient top/bottom + radial vignette on edges -->
+    <div style="position:absolute;inset:0;z-index:1;pointer-events:none;background:
+      radial-gradient(ellipse 120% 100% at 50% 50%, transparent 30%, rgba(10,11,15,0.85) 100%),
+      linear-gradient(to bottom,rgba(10,11,15,0.88) 0%,rgba(10,11,15,0.55) 40%,rgba(10,11,15,0.75) 80%,rgba(10,11,15,0.97) 100%);
+    "></div>
+
+    <!-- Content -->
+    <div class="container" style="position:relative;z-index:2;padding-top:140px;padding-bottom:100px;">
       <div class="proj-breadcrumb">
         <a href="../index.html#projects">← Back to Projects</a>
       </div>
       <div class="proj-hero-content">
         <div class="proj-meta-top">
-          
+          <span class="proj-category-tag">Motion Graphics</span>
+          <span class="proj-category-tag">After Effects</span>
+          <span class="proj-category-tag">Visual Design</span>
         </div>
         <h1 class="proj-title">Motion Graphics<br/><span class="proj-title-accent">Reel</span></h1>
         <p class="proj-subtitle">A collection of motion graphics and animated advertisements built in Adobe After Effects - spanning product ads, neon circuit animations, countdown timers, and cinematic story sequences.</p>
@@ -367,7 +376,7 @@
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
         Back to Projects
       </a>
-      <a href="../index.html#contact" class="contact-proj-btn">Let's Talk About This Project →</a>
+      <a href="index.html#contact" class="contact-proj-btn">Let's Talk About This Project →</a>
     </div>
   </section>
 
@@ -380,5 +389,20 @@
   </footer>
 
   <script src="project.js"></script>
+  <script>
+    // Sequential background video: product.mp4 → food.mp4 → loop
+    (function() {
+      var videos = ['product.mp4', 'food.mp4'];
+      var idx = 0;
+      var vid = document.getElementById('bgVideo');
+      if (!vid) return;
+      vid.addEventListener('ended', function() {
+        idx = (idx + 1) % videos.length;
+        vid.src = videos[idx];
+        vid.load();
+        vid.play();
+      });
+    })();
+  </script>
 </body>
 </html>
