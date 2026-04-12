@@ -51,7 +51,7 @@ function copyCode(btn) {
 
 // ─── SCROLL REVEAL ──────────────────────────────────────
 var revealEls = document.querySelectorAll(
-  '.step-card, .dashboard-card, .result-card, .challenge-item, .proj-summary-box'
+  '.step-card, .dashboard-card, .result-card, .challenge-item, .proj-summary-box, .sql-screenshot-wrap, .demo-video-wrap, .demo-chapter'
 );
 revealEls.forEach(function(el) {
   el.style.opacity = '0';
