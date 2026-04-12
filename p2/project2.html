@@ -6,9 +6,6 @@
   <title>Monte Carlo 3D Center of Mass - Saranga Nuwan</title>
   <link rel="stylesheet" href="../style.css" />
   <link rel="stylesheet" href="project.css" />
-  <style>
-    html, body { overflow-x: hidden; max-width: 100%; }
-  </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -208,7 +205,7 @@
             </div>
           </div>
           <div class="result-verdict">
-            <span class="badge badge-green">Close Result</span>
+            <span class="badge badge-dim">Close Result</span>
             <p>Error: 0.1014</p>
           </div>
         </div>
@@ -299,14 +296,13 @@
       </div>
 
       <div class="method-verdict-card method-verdict-bad">
-        <div class="verdict-icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
         <div>
           <h4>Conclusion: Too Slow</h4>
           <p>Ray Casting is highly accurate - but every single ray must traverse and check every triangle in the mesh. This makes the time complexity very high. Even with just <strong>1,000 points</strong>, the computation time was unacceptably slow for a Monte Carlo simulation that needs hundreds of thousands of samples.</p>
           <div class="verdict-tags">
-            <span class="badge badge-green">Accuracy: Very High</span>
-            <span class="badge badge-red">Speed: Very Slow</span>
-            <span class="badge badge-red">Rejected</span>
+            <span class="badge badge-dim">Accuracy: Very High</span>
+            <span class="badge badge-dim">Speed: Very Slow</span>
+            <span class="badge badge-dim">Rejected</span>
           </div>
         </div>
       </div>
@@ -510,8 +506,8 @@
             </tr>
             <tr class="method-winner">
               <td><strong>Accuracy</strong></td>
-              <td><span class="badge badge-green">High (10/10)</span></td>
-              <td><span class="badge badge-green">High (9/10) - improves as N increases</span></td>
+              <td><span class="badge badge-dim">High (10/10)</span></td>
+              <td><span class="badge badge-dim">High (9/10) - improves as N increases</span></td>
             </tr>
           </tbody>
         </table>
@@ -519,30 +515,27 @@
 
       <div class="method-detail-grid" style="margin-top:28px;">
         <div class="method-detail-card">
-          <div class="method-icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 4h8l1 5H7L8 4z"/><rect x="7" y="9" width="10" height="7" rx="1"/><path d="M9 16v4M15 16v4"/><circle cx="12" cy="5.5" r="0.5" fill="currentColor"/></svg></div>
           <h4>Ray Casting</h4>
           <p>Very accurate but requires a full mesh traversal for each point. Time complexity is too high - even 1,000 points was unacceptably slow. <strong>Rejected.</strong></p>
           <div style="margin-top:12px;">
-            <span class="badge badge-green">Accuracy: High</span>&nbsp;
-            <span class="badge badge-red">Speed: Very Slow</span>
+            <span class="badge badge-dim">Accuracy: High</span>&nbsp;
+            <span class="badge badge-dim">Speed: Very Slow</span>
           </div>
         </div>
         <div class="method-detail-card">
-          <div class="method-icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
           <h4>Voxelization Only</h4>
           <p>Accurate but must check every voxel - O(n³) complexity grows quickly and becomes memory intensive at high grid resolutions. <strong>Not optimal.</strong></p>
           <div style="margin-top:12px;">
-            <span class="badge badge-green">Accuracy: High</span>&nbsp;
-            <span class="badge badge-yellow">Speed: Moderate</span>
+            <span class="badge badge-dim">Accuracy: High</span>&nbsp;
+            <span class="badge badge-dim">Speed: Moderate</span>
           </div>
         </div>
         <div class="method-detail-card method-detail-winner">
-          <div class="method-icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
           <h4>Monte Carlo + Voxelization</h4>
           <p>Pre-compute the grid once, then only check N random samples with O(1) lookups. Fast, accurate, and scalable. <strong>Best choice.</strong></p>
           <div style="margin-top:12px;">
-            <span class="badge badge-green">Accuracy: High</span>&nbsp;
-            <span class="badge badge-green">Speed: Fast</span>
+            <span class="badge badge-dim">Accuracy: High</span>&nbsp;
+            <span class="badge badge-dim">Speed: Fast</span>
           </div>
         </div>
       </div>
