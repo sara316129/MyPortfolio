@@ -157,13 +157,6 @@ FROM [Order] o
 LEFT JOIN [Return]  r ON o.Order_ID = r.Order_ID
 LEFT JOIN  People   p ON o.Region   = p.Region;</code></pre>
             </div>
-
-            <!-- SQL screenshot — SSMS showing the query running with results -->
-            <div class="sql-screenshot-wrap">
-              <img src="sql.webp" alt="SQL Server Management Studio — data preparation query executing with 9,994 rows returned" loading="lazy" />
-              <span class="sql-screenshot-caption">SSMS — query executed successfully · 9,994 rows</span>
-            </div>
-
           </div>
         </div>
 
@@ -355,22 +348,6 @@ CALCULATE(
       </div>
       <div class="proj-summary-box">
         <p>This dashboard enables stakeholders to quickly identify key customers, profitable products, and high growth regions - supporting strategic decisions through clear, interactive visual insights. The combination of SQL for data preparation and Power BI + DAX for modeling demonstrates an end to end analytics workflow.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECT DEMO VIDEO -->
-  <section class="proj-section proj-section-alt" id="demo">
-    <div class="container">
-      <div class="proj-section-label">Project Demo</div>
-      <h2 class="proj-section-title">See It in Action</h2>
-      <p class="proj-section-sub">A walkthrough of the full workflow — SQL data preparation, DAX measure building, and the interactive Power BI dashboards.</p>
-
-      <div class="demo-video-solo">
-        <video controls controlsList="nodownload" preload="auto" poster="Visualizasion-1.png"
-               style="width:100%;display:block;border-radius:14px;border:1px solid var(--border);background:#050609;outline:none;max-height:70vh;">
-          <source src="web.mp4" type="video/mp4" />
-        </video>
       </div>
     </div>
   </section>
