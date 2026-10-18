@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Multimodal Cancer Prognosis · Saranga Nuwan</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="project.css" />
+  <link rel="stylesheet" href="project4.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar scrolled" id="navbar">
+    <a href="../index.html" class="nav-logo">SNH<span class="dot">.</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html#home">Home</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#certificates">Certificates</a></li>
+      <li><a href="../index.html#education">Education</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="proj-hero">
+    <div class="proj-hero-bg"></div>
+    <div class="container">
+      <div class="proj-breadcrumb">
+        <a href="../index.html#projects">← Back to Projects</a>
+      </div>
+      <div class="proj-meta-top">
+        <span class="proj-category-tag">Group Project · AM 4087</span>
+        <span class="proj-category-tag">Machine Learning</span>
+      </div>
+      <h1 class="proj-title">Multimodal Cancer<br/><span class="proj-title-accent">Prognosis</span></h1>
+      <p class="proj-subtitle">Predicting lung cancer survival by combining CT imaging, tumour radiomics and clinical data in one multimodal model. A group project from Scientific Computing with Machine Learning, University of Colombo, presented as a research poster.</p>
+      <div class="proj-tools-row">
+        <span class="proj-tool">Python</span>
+        <span class="proj-tool">PyTorch</span>
+        <span class="proj-tool">MedicalNet ResNet-10</span>
+        <span class="proj-tool">PyRadiomics</span>
+        <span class="proj-tool">scikit-learn</span>
+        <span class="proj-tool">React</span>
+        <span class="proj-tool">FastAPI</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section class="proj-section" id="overview">
+    <div class="container">
+      <div class="proj-section-label">Overview</div>
+      <h2 class="proj-section-title">The Project at a Glance</h2>
+      <p class="proj-section-sub">Doctors often study scans and clinical records separately. This project brings CT features, radiomics and clinical data together to give each patient a survival risk score.</p>
+
+      <div class="results-grid">
+        <div class="result-card"><span class="result-num">377</span><span class="result-label">Patients (from 422)</span></div>
+        <div class="result-card"><span class="result-num">3</span><span class="result-label">Data types</span></div>
+        <div class="result-card"><span class="result-num">3</span><span class="result-label">Fusion strategies</span></div>
+        <div class="result-card"><span class="result-num">0.609</span><span class="result-label">Best 5-fold CV C-index</span></div>
+      </div>
+
+      <div class="proj-summary-box">
+        <p><strong style="color:#fff;">Dataset:</strong> NSCLC-Radiomics (Lung1) from The Cancer Imaging Archive, a public dataset with CT scans, tumour outlines and clinical records.<br/>
+        <strong style="color:#fff;">My role:</strong> Member 5 (Fusion &amp; Training) and group leader. I worked on the fusion models and their training, and coordinated the team.<br/>
+        <strong style="color:#fff;">Scope note:</strong> The poster title covers the full research theme (histopathology, radiology, genomics and clinical reports). What we built and tested uses three of those inputs: CT, radiomics and clinical data.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- POSTER -->
+  <section class="proj-section proj-section-alt" id="poster">
+    <div class="container">
+      <div class="proj-section-label">Poster</div>
+      <h2 class="proj-section-title">Research Poster</h2>
+      <p class="proj-section-sub">Presented at the poster session, Department of Mathematics, University of Colombo. Click the image to zoom in.</p>
+
+      <div class="p4-poster-wrap">
+        <img class="p4-zoom" src="poster-board.jpg" alt="Group 7 research poster: Multimodal Cancer Prognosis" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- PIPELINE -->
+  <section class="proj-section" id="pipeline">
+    <div class="container">
+      <div class="proj-section-label">Methodology</div>
+      <h2 class="proj-section-title">How the Model Works</h2>
+      <p class="proj-section-sub">From raw scans and records to one survival risk score per patient.</p>
+
+      <div class="steps-list">
+
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-body">
+            <h3>Clinical Data Processing</h3>
+            <p>Started with 422 patient records and cleaned them into a complete, numeric table.</p>
+            <ul class="step-list">
+              <li>Filled <strong>22 missing ages</strong> with the median</li>
+              <li>Removed <strong>44 rows</strong> with missing staging or diagnosis, leaving <strong>377 patients</strong></li>
+              <li>One-hot encoded gender and histology; converted overall stage to an ordered number</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div class="step-body">
+            <h3>CT Preprocessing</h3>
+            <p>CT series and tumour contours (RTSTRUCT) were downloaded with the TCIA Data Retriever, read from DICOM and resampled to a consistent voxel spacing across all patients. The tumour contours were used to extract the tumour region for the radiomics features.</p>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-body">
+            <h3>Deep CT Features</h3>
+            <p>A pretrained 3D <strong style="color:#fff;">MedicalNet ResNet-10</strong> turns each CT volume into a 512-number vector.</p>
+            <ul class="step-list">
+              <li><strong>PCA</strong> reduces 512 features to 32 components to limit overfitting</li>
+              <li>A 3D CNN trained from scratch was unstable with only 263 training patients, so a pretrained encoder was used</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">04</div>
+          <div class="step-body">
+            <h3>Radiomic Features</h3>
+            <p>PyRadiomics extracted <strong style="color:#fff;">107 shape, intensity and texture features</strong> from the CT and tumour mask.</p>
+            <ul class="step-list">
+              <li><strong>mRMR</strong> (minimum redundancy, maximum relevance) selected 16 features that relate to survival and overlap least with each other</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">05</div>
+          <div class="step-body">
+            <h3>Multimodal Fusion</h3>
+            <p>Three ways of combining the CT, radiomics and clinical features were compared:</p>
+            <ul class="step-list">
+              <li><strong>Intermediate fusion:</strong> join the features early and learn one shared representation</li>
+              <li><strong>Attention fusion:</strong> learn how much each data type matters for each patient</li>
+              <li><strong>Late fusion:</strong> make a separate prediction per data type and average them</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">06</div>
+          <div class="step-body">
+            <h3>Survival Model and Validation</h3>
+            <p>The network outputs a risk score and is trained with the <strong style="color:#fff;">Cox partial-likelihood loss</strong>, which handles patients whose outcome is not yet known (censoring). Performance is measured with the concordance index (C-index) using <strong style="color:#fff;">5-fold cross-validation</strong>.</p>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">07</div>
+          <div class="step-body">
+            <h3>Patient Clustering</h3>
+            <p>K-means (k = 3) on the CT and radiomics features found three patient groups. One small group of 7 patients showed clearly worse survival on Kaplan-Meier curves, and a log-rank test showed the groups differ significantly.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="proj-section proj-section-alt" id="results">
+    <div class="container">
+      <div class="proj-section-label">Results</div>
+      <h2 class="proj-section-title">Model Comparison</h2>
+      <p class="proj-section-sub">C-index: 0.5 is random guessing and 1.0 is perfect. Each model was tested on a held-out split and with 5-fold cross-validation.</p>
+
+      <div class="method-table-wrap">
+        <table class="method-table">
+          <thead>
+            <tr><th>Model</th><th>Test C-index</th><th>5-fold CV C-index</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Clinical only</td><td>0.552</td><td>0.517</td></tr>
+            <tr><td>CT only</td><td>0.614</td><td>0.560</td></tr>
+            <tr><td>Radiomics only</td><td>0.587</td><td>0.552</td></tr>
+            <tr class="method-winner"><td>Intermediate fusion <span class="badge badge-green">Best</span></td><td>0.624</td><td>0.609</td></tr>
+            <tr><td>Attention fusion</td><td>0.615</td><td>0.578</td></tr>
+            <tr><td>Late fusion</td><td>0.601</td><td>0.551</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="challenges-grid">
+        <div class="challenge-item">
+          <div class="challenge-icon">📊</div>
+          <div><h4>What the numbers show</h4>
+          <p>All C-index values sit between 0.5 and 0.62: better than random, but modest. Clinical data alone is close to random, while CT and radiomics add the most signal. On this small dataset, fusion performs similarly to the best single data type.</p></div>
+        </div>
+        <div class="challenge-item">
+          <div class="challenge-icon">🔎</div>
+          <div><h4>What drives the risk score</h4>
+          <p>Older patients receive higher risk scores. The high and low risk groups differ mainly in age, and the radiomics differences are small, so no single feature drives the score.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEB PROTOTYPE -->
+  <section class="proj-section" id="prototype">
+    <div class="container">
+      <div class="proj-section-label">Web Prototype</div>
+      <h2 class="proj-section-title">Risk Prediction App</h2>
+      <p class="proj-section-sub">A small web app built on top of the trained model. Upload a CT series and tumour contour, enter the clinical details, and get a relative risk score with 1-year and 2-year survival estimates.</p>
+
+      <div class="p4-proto-grid">
+        <figure class="p4-proto-card">
+          <img class="p4-zoom" src="web-1.png" alt="Web prototype: input form and prediction result" loading="lazy" />
+          <figcaption>Screen 1</figcaption>
+        </figure>
+        <figure class="p4-proto-card">
+          <img class="p4-zoom" src="web-2.png" alt="Web prototype: prediction result" loading="lazy" />
+          <figcaption>Screen 2</figcaption>
+        </figure>
+        <figure class="p4-proto-card">
+          <img class="p4-zoom" src="web-3.png" alt="Web prototype: detailed breakdown" loading="lazy" />
+          <figcaption>Screen 3</figcaption>
+        </figure>
+      </div>
+
+      <div class="proj-summary-box" style="margin-top:32px;">
+        <p><strong style="color:#fff;">Built with:</strong> React (frontend) and FastAPI (backend).<br/>
+        <strong style="color:#fff;">Note:</strong> This is a research prototype. Scores are relative within the training cohort and are not clinical advice.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHALLENGES -->
+  <section class="proj-section proj-section-alt" id="challenges">
+    <div class="container">
+      <div class="proj-section-label">Learnings</div>
+      <h2 class="proj-section-title">Challenges &amp; Limitations</h2>
+
+      <div class="challenges-grid">
+        <div class="challenge-item">
+          <div class="challenge-icon">🧠</div>
+          <div><h4>Small dataset, big networks</h4>
+          <p>A 3D CNN trained from scratch gave weak, unstable features with only 263 training patients. A pretrained MedicalNet encoder, PCA and mRMR kept the feature count manageable.</p></div>
+        </div>
+        <div class="challenge-item">
+          <div class="challenge-icon">🔍</div>
+          <div><h4>Data leakage</h4>
+          <p>Two data-leakage issues were found while retraining. They were fixed with corrected splits before the final results were produced.</p></div>
+        </div>
+        <div class="challenge-item">
+          <div class="challenge-icon">⚠️</div>
+          <div><h4>Limitations</h4>
+          <p>Only the NSCLC-Radiomics (Lung1) dataset was used and the cohort is small. There is no external validation, and only the C-index was used, so calibration (how close predicted risk is to real outcomes) was not measured.</p></div>
+        </div>
+        <div class="challenge-item">
+          <div class="challenge-icon">🚀</div>
+          <div><h4>Future work</h4>
+          <p>Add histopathology images, genomic profiles and clinical report text; fine-tune the 3D CT encoder; explore attention-based fusion further; add calibration metrics such as the Brier score and test on external datasets.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM & PRESENTATION -->
+  <section class="proj-section" id="team">
+    <div class="container">
+      <div class="proj-section-label">Team</div>
+      <h2 class="proj-section-title">Group 7 at the Poster Session</h2>
+      <p class="proj-section-sub">Department of Mathematics, University of Colombo.</p>
+
+      <div class="p4-photo-grid">
+        <figure class="p4-photo p4-photo-wide">
+          <img class="p4-zoom" src="team-selfie.jpg" alt="Group 7 team photo in front of the poster" loading="lazy" />
+        </figure>
+        <figure class="p4-photo">
+          <img class="p4-zoom" src="presenting-1.jpg" alt="Discussing the poster with a visitor" loading="lazy" />
+        </figure>
+        <figure class="p4-photo">
+          <img class="p4-zoom" src="presenting-2.jpg" alt="Presenting the poster to the supervisor" loading="lazy" />
+        </figure>
+        <figure class="p4-photo">
+          <img class="p4-zoom" src="presenting-3.jpg" alt="Explaining the results on the poster" loading="lazy" />
+        </figure>
+      </div>
+
+      <div class="p4-team">
+        <div class="p4-member p4-member-me"><span>H.W.S.N. Hathurusinghe</span><em>Fusion &amp; Training · Group leader</em></div>
+        <div class="p4-member"><span>U.A.D.L.T. Subasinghe</span></div>
+        <div class="p4-member"><span>D.R.D.S. Wittahachchi</span></div>
+        <div class="p4-member"><span>K.G.N. Sathsara</span></div>
+        <div class="p4-member"><span>J.A.S.M. Jayasinghe</span></div>
+        <div class="p4-member"><span>M.O.P. Peiris</span></div>
+        <div class="p4-member p4-member-sup"><span>Dr. U.P. Liyanage</span><em>Supervisor</em></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM NAV -->
+  <section class="proj-nav-footer">
+    <div class="container">
+      <a href="../index.html#projects" class="back-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        Back to Projects
+      </a>
+      <a href="../index.html#contact" class="contact-proj-btn">Let's Talk About This Project →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p>2026 Saranga Nuwan Hathurusinghe </p>
+      <p class="footer-sub">ⓒ All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="p4-lightbox" id="p4Lightbox" aria-hidden="true">
+    <button class="p4-lightbox-close" id="p4LightboxClose" aria-label="Close image">&times;</button>
+    <img id="p4LightboxImg" src="" alt="" />
+  </div>
+
+  <script src="project.js"></script>
+  <script src="project4.js"></script>
+</body>
+</html>
