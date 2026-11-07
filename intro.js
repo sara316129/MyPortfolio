@@ -1,11 +1,13 @@
 /* =========================================================
-   INTRO — "Cursor Agents" build-in animation (home page)
-   - Self-contained: injects its own CSS, no libraries, no
-     third-party scripts.
-   - Plays once per browser tab session (skipped for anchor
-     links and for visitors who prefer reduced motion).
-   - A "Motion" button is added to the nav to replay it.
-   - Add ?intro to the URL to force it to play on load.
+   INTRO — "Cursor Agents" build-in animation
+   - Hero: plays on load (once per browser tab session).
+   - Other sections: cursors build each element as you scroll
+     to it (About, Skills, Projects, Certificates, Education,
+     Contact).
+   - A "Motion" button in the nav replays everything.
+   - Self-contained: injects its own CSS, no libraries.
+   - Skipped for anchor links (#projects) and for visitors who
+     prefer reduced motion. Add ?intro to the URL to force it.
    ========================================================= */
 (function () {
   'use strict';
@@ -21,6 +23,7 @@
 
   // ─── 1. CSS (always injected so the Motion button can replay) ───
   var css = `
+  /* hero elements */
   html.ix-on .hero-bg-grid,
   html.ix-on nav.navbar,
   html.ix-on .hero-image-wrap,
@@ -34,6 +37,13 @@
   html.ix-on .ix-shown.ix-shown.ix-shown {
     opacity: 1 !important; filter: none !important;
     transition: opacity .7s ease, filter .7s ease !important;
+  }
+
+  /* other sections */
+  .ix-pend { opacity: 0 !important; filter: blur(6px) !important; pointer-events: none; }
+  .ix-pend.ix-go.ix-go {
+    opacity: 1 !important; filter: none !important;
+    transition: opacity .7s ease, filter .7s ease, transform .7s ease !important;
   }
 
   .ix-layer { position: fixed; inset: 0; z-index: 3000; pointer-events: none; overflow: hidden; }
@@ -122,6 +132,10 @@
     { n: 'Motion Agent', c: '#ffd166' }
   ];
 
+  var SEC_IDS = ['about', 'skills', 'projects', 'certificates', 'education', 'contact'];
+  var SEC_SEL = ['.section-label', '.container > .section-title', '.about-text', '.about-card',
+                 '.marquee-wrapper', '.project-card', '.cert-card', '.edu-card', '.contact-card'].join(',');
+
   // ─── 3. Helpers ─────────────────────────────────────────
   var done = false, playing = false;
   var layerEl = null, safetyTimer = null, motionBtn = null;
@@ -129,11 +143,11 @@
   function ease(p) { return p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2; }
   function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
 
-  function tween(d, fn) {
+  function tween(d, fn, stop) {
     return new Promise(function (res) {
       var t0 = performance.now();
       (function f(t) {
-        if (done) { res(); return; }
+        if (stop()) { res(); return; }
         var p = Math.min(1, (t - t0) / d);
         fn(p);
         if (p < 1) requestAnimationFrame(f); else res();
@@ -143,7 +157,7 @@
 
   function place(cur) { cur.el.style.transform = 'translate3d(' + cur.x + 'px,' + cur.y + 'px,0)'; }
 
-  function fly(cur, x, y, d) {
+  function fly(cur, x, y, d, stop) {
     var x0 = cur.x, y0 = cur.y;
     var cx = (x0 + x) / 2 + (Math.random() - 0.5) * 240;
     var cy = (y0 + y) / 2 + (Math.random() - 0.5) * 240;
@@ -152,7 +166,7 @@
       cur.x = u * u * x0 + 2 * u * e * cx + e * e * x;
       cur.y = u * u * y0 + 2 * u * e * cy + e * e * y;
       place(cur);
-    });
+    }, stop);
   }
 
   function click(cur) {
@@ -164,6 +178,89 @@
     }
   }
 
+  function startPoint(i) {
+    var W = window.innerWidth, H = window.innerHeight;
+    return [[-60, -60], [W + 60, -40], [-60, H * 0.6], [W + 60, H + 40], [W * 0.5, -70]][i % 5];
+  }
+
+  function makeCursor(layer, i) {
+    var a = AGENTS[i % AGENTS.length];
+    var s = startPoint(i);
+    var el = document.createElement('div');
+    el.className = 'ix-cur';
+    el.setAttribute('aria-hidden', 'true');
+    el.innerHTML =
+      '<svg width="18" height="24" viewBox="0 0 16 22"><path d="M0 0v17l4.6-4.3 3.1 7.1 2.6-1.1-3.1-7H15z" fill="' + a.c +
+      '" stroke="#06080c" stroke-width="1.3" stroke-linejoin="round"/></svg>' +
+      '<span class="ix-tag" style="background:' + a.c + '">' + a.n + '</span>';
+    layer.appendChild(el);
+    var cur = { el: el, svg: el.firstChild, x: s[0], y: s[1], c: a.c, start: s };
+    place(cur);
+    return cur;
+  }
+
+  // Shared: a cursor flies to an element, drags a selection box over it,
+  // then the element is revealed.  ctx = { layer, stop(), reveal(el) }
+  async function buildElement(ctx, cur, el, hasBox) {
+    var r = el.getBoundingClientRect();
+    var W = window.innerWidth, H = window.innerHeight;
+
+    // off-screen by now (user scrolled past) -> just show it
+    if (r.bottom < 20 || r.top > H - 20 || r.width < 2 || r.height < 2) { ctx.reveal(el); return; }
+
+    if (!hasBox) {
+      var tx = r.left + r.width  * (0.3 + Math.random() * 0.4);
+      var ty = r.top  + r.height * (0.3 + Math.random() * 0.4);
+      await fly(cur, tx, ty, 700, ctx.stop);
+      if (ctx.stop()) return;
+      click(cur);
+      ctx.reveal(el);
+      await sleep(200);
+      return;
+    }
+
+    var pad = 6;
+    var x  = Math.max(4, r.left - pad),  y  = Math.max(4, r.top - pad);
+    var x2 = Math.min(W - 4, r.right + pad), y2 = Math.min(H - 4, r.bottom + pad);
+    var w = x2 - x, h = y2 - y;
+    if (w < 8 || h < 8) { ctx.reveal(el); return; }
+
+    await fly(cur, x, y, 550 + Math.random() * 250, ctx.stop);
+    if (ctx.stop()) return;
+    click(cur);
+
+    var box = document.createElement('div');
+    box.className = 'ix-sel';
+    box.style.color = cur.c;
+    box.style.left = x + 'px';
+    box.style.top = y + 'px';
+    box.style.width = '0px';
+    box.style.height = '0px';
+    box.innerHTML = '<i class="ix-h"></i><i class="ix-h"></i><i class="ix-h"></i><i class="ix-h"></i>' +
+                    '<div class="ix-dim"><span>' + Math.round(r.width) + ' &times; ' + Math.round(r.height) + '</span></div>';
+    ctx.layer.insertBefore(box, cur.el);
+
+    await sleep(100);
+    var dur = Math.min(650, 320 + (w * h) / 3000);
+    await tween(dur, function (p) {
+      var e = ease(p);
+      box.style.width  = (w * e) + 'px';
+      box.style.height = (h * e) + 'px';
+      cur.x = x + w * e;
+      cur.y = y + h * e;
+      place(cur);
+    }, ctx.stop);
+    if (ctx.stop()) { if (box.parentNode) box.parentNode.removeChild(box); return; }
+
+    ctx.reveal(el);
+    await sleep(260);
+    box.style.transition = 'opacity .3s ease';
+    box.style.opacity = '0';
+    setTimeout(function () { if (box.parentNode) box.parentNode.removeChild(box); }, 350);
+  }
+
+  // ─── 4. Hero animation ──────────────────────────────────
+  function isDone() { return done; }
   function onKey(e) { if (e.key === 'Escape') finish(); }
 
   function hardCleanup() {
@@ -175,12 +272,12 @@
     layerEl = null;
     playing = false;
     if (motionBtn) motionBtn.disabled = false;
+    kick(); // start building any sections that were waiting
   }
 
   var finishFn = null;
   function finish() { if (finishFn) finishFn(); }
 
-  // ─── 4. The animation ───────────────────────────────────
   function run(isReplay) {
     var layers = [];
     TARGETS.forEach(function (t) {
@@ -193,7 +290,6 @@
     playing = true;
     if (motionBtn) motionBtn.disabled = true;
 
-    var W = window.innerWidth, H = window.innerHeight;
     var total = layers.length, count = 0;
 
     layerEl = document.createElement('div');
@@ -224,88 +320,23 @@
     document.addEventListener('keydown', onKey);
     safetyTimer = setTimeout(finish, 12000);
 
-    var starts = [[-60, -60], [W + 60, -40], [-60, H * 0.6], [W + 60, H + 40], [W * 0.5, -70]];
-    var cursors = AGENTS.map(function (a, i) {
-      var el = document.createElement('div');
-      el.className = 'ix-cur';
-      el.setAttribute('aria-hidden', 'true');
-      el.innerHTML =
-        '<svg width="18" height="24" viewBox="0 0 16 22"><path d="M0 0v17l4.6-4.3 3.1 7.1 2.6-1.1-3.1-7H15z" fill="' + a.c +
-        '" stroke="#06080c" stroke-width="1.3" stroke-linejoin="round"/></svg>' +
-        '<span class="ix-tag" style="background:' + a.c + '">' + a.n + '</span>';
-      layerEl.appendChild(el);
-      var cur = { el: el, svg: el.firstChild, x: starts[i][0], y: starts[i][1], c: a.c, start: starts[i] };
-      place(cur);
-      return cur;
-    });
+    var ctx = {
+      layer: layerEl,
+      stop: isDone,
+      reveal: function (el) { el.classList.add('ix-shown'); count++; progress(); }
+    };
 
-    function reveal(L) {
-      L.el.classList.add('ix-shown');
-      count++;
-      progress();
-    }
-
-    async function doLayer(cur, L) {
-      var r = L.el.getBoundingClientRect();
-
-      if (!L.box) {
-        // background layer: cursor drops it in without a selection box
-        var tx = r.left + r.width  * (0.3 + Math.random() * 0.4);
-        var ty = r.top  + r.height * (0.3 + Math.random() * 0.4);
-        await fly(cur, tx, ty, 700);
-        if (done) return;
-        click(cur);
-        reveal(L);
-        await sleep(200);
-        return;
-      }
-
-      var pad = 6;
-      var x = r.left - pad, y = r.top - pad;
-      var w = r.width + pad * 2, h = r.height + pad * 2;
-
-      await fly(cur, x, y, 550 + Math.random() * 250);
-      if (done) return;
-      click(cur);
-
-      var box = document.createElement('div');
-      box.className = 'ix-sel';
-      box.style.color = cur.c;
-      box.style.left = x + 'px';
-      box.style.top = y + 'px';
-      box.style.width = '0px';
-      box.style.height = '0px';
-      box.innerHTML = '<i class="ix-h"></i><i class="ix-h"></i><i class="ix-h"></i><i class="ix-h"></i>' +
-                      '<div class="ix-dim"><span>' + Math.round(r.width) + ' &times; ' + Math.round(r.height) + '</span></div>';
-      layerEl.insertBefore(box, cur.el);
-
-      await sleep(100);
-      await tween(400, function (p) {
-        var e = ease(p);
-        box.style.width  = (w * e) + 'px';
-        box.style.height = (h * e) + 'px';
-        cur.x = x + w * e;
-        cur.y = y + h * e;
-        place(cur);
-      });
-      if (done) return;
-
-      reveal(L);
-      await sleep(260);
-      box.style.transition = 'opacity .3s ease';
-      box.style.opacity = '0';
-      setTimeout(function () { if (box.parentNode) box.parentNode.removeChild(box); }, 350);
-    }
+    var cursors = AGENTS.map(function (a, i) { return makeCursor(layerEl, i); });
 
     async function worker(cur, k) {
       var mine = layers.filter(function (_, i) { return i % cursors.length === k; });
       await sleep(k * 220);
       for (var i = 0; i < mine.length; i++) {
         if (done) return;
-        await doLayer(cur, mine[i]);
+        await buildElement(ctx, cur, mine[i].el, mine[i].box);
       }
       if (done) return;
-      await fly(cur, cur.start[0], cur.start[1], 650); // fly away
+      await fly(cur, cur.start[0], cur.start[1], 650, isDone);
       if (cur.el.parentNode) cur.el.parentNode.removeChild(cur.el);
     }
 
@@ -317,7 +348,110 @@
     });
   }
 
-  // ─── 5. "Motion" replay button in the nav ───────────────
+  // ─── 5. Other sections: build as you scroll ─────────────
+  var secObs = null, secLayer = null, secGen = 0;
+  var queue = [], slots = [false, false, false, false, false], activeWorkers = 0;
+
+  function showEl(el) {
+    if (el.classList.contains('reveal')) el.classList.add('visible'); // keep main.js reveal in sync
+    el.classList.add('ix-go');
+    var g = secGen;
+    setTimeout(function () {
+      if (g === secGen) el.classList.remove('ix-pend', 'ix-go');
+    }, 900);
+  }
+
+  function armSections() {
+    if (!('IntersectionObserver' in window)) return;
+    if (secObs) secObs.disconnect();
+    secObs = new IntersectionObserver(onSecIntersect, {
+      threshold: [0.05, 0.15, 0.3, 0.5],
+      rootMargin: '0px 0px -6% 0px'
+    });
+    SEC_IDS.forEach(function (id) {
+      var sec = document.getElementById(id);
+      if (!sec) return;
+      Array.prototype.forEach.call(sec.querySelectorAll(SEC_SEL), function (el) {
+        el.classList.remove('ix-go');
+        el.classList.add('ix-pend');
+        secObs.observe(el);
+      });
+    });
+  }
+
+  function onSecIntersect(entries) {
+    var H = window.innerHeight, fresh = [];
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      if (en.intersectionRatio < 0.15 && en.intersectionRect.height < H * 0.4) return;
+      secObs.unobserve(en.target);
+      fresh.push(en.target);
+    });
+    fresh.sort(function (a, b) {
+      var ra = a.getBoundingClientRect(), rb = b.getBoundingClientRect();
+      return (ra.top - rb.top) || (ra.left - rb.left);
+    });
+    fresh.forEach(function (el) { queue.push(el); });
+    kick();
+  }
+
+  function resetSections() {
+    secGen++;
+    queue = [];
+    slots = [false, false, false, false, false];
+    activeWorkers = 0;
+    if (secLayer && secLayer.parentNode) secLayer.parentNode.removeChild(secLayer);
+    secLayer = null;
+  }
+
+  function kick() {
+    if (playing || !queue.length) return;
+    if (!secLayer) {
+      secLayer = document.createElement('div');
+      secLayer.className = 'ix-layer';
+      document.body.appendChild(secLayer);
+    }
+    var g = secGen, layer = secLayer;
+    var ctx = {
+      layer: layer,
+      stop: function () { return g !== secGen; },
+      reveal: showEl
+    };
+    var pending = queue.length;
+    while (pending > 0 && activeWorkers < AGENTS.length) {
+      var s = slots.indexOf(false);
+      if (s < 0) break;
+      slots[s] = true;
+      activeWorkers++;
+      pending--;
+      secWorker(s, ctx, g, layer);
+    }
+  }
+
+  async function secWorker(s, ctx, g, layer) {
+    var cur = makeCursor(layer, s);
+    try {
+      while (queue.length && !ctx.stop()) {
+        var el = queue.shift();
+        try { await buildElement(ctx, cur, el, true); }
+        catch (err) { showEl(el); }
+      }
+      if (!ctx.stop()) await fly(cur, cur.start[0], cur.start[1], 600, ctx.stop);
+    } finally {
+      if (cur.el.parentNode) cur.el.parentNode.removeChild(cur.el);
+      if (g === secGen) {
+        slots[s] = false;
+        activeWorkers--;
+        if (queue.length) kick();
+        else if (!activeWorkers && secLayer === layer) {
+          if (layer.parentNode) layer.parentNode.removeChild(layer);
+          secLayer = null;
+        }
+      }
+    }
+  }
+
+  // ─── 6. "Motion" replay button in the nav ───────────────
   function addMotionButton() {
     var ul = document.getElementById('navLinks');
     if (!ul) return;
@@ -332,7 +466,9 @@
       var t = document.getElementById('navToggle');
       if (t) t.classList.remove('open');
       ul.classList.remove('open');
+      resetSections();
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      armSections();
       html.classList.add('ix-on');
       run(true);
     });
@@ -343,6 +479,7 @@
   function start() {
     addMotionButton();
     if (!autoplay) return;
+    armSections();
     var fonts = (document.fonts && document.fonts.ready)
       ? Promise.race([document.fonts.ready, sleep(1500)])
       : Promise.resolve();
